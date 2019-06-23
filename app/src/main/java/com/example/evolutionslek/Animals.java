@@ -1,6 +1,6 @@
 package com.example.evolutionslek;
 
-import java.lang.Math();
+import java.lang.Math;
 
 public class Animals {
     int mass;   //1-100
