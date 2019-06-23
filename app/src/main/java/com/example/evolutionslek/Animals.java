@@ -1,6 +1,6 @@
 package com.example.evolutionslek;
 
-import java.lang.Math();
+import java.lang.Math;
 
 public class Animals {
     int mass;   //1-100
@@ -8,13 +8,13 @@ public class Animals {
     int maxHealth; //1-100
     int health; //0-100
     int horns;  //0-10 i början
-    int attack; //0-100
+    int attack; //calcuated
     boolean herbivore;
 }
 
 class Pedro extends Animals {
     public Pedro() {
-        mass = 50;
+        mass = 30;
         defense = 2;
         maxHealth = mass;
         health = maxHealth;
