@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ShowQR"></activity>
+        <activity android:name=".IsDead"></activity>
+        <activity android:name=".Eating" />
+        <activity android:name=".Breeding" />
+        <activity android:name=".ShowQR" />
         <activity android:name=".Ingame" />
         <activity android:name=".StartScreen" />
         <activity android:name=".MainActivity">
