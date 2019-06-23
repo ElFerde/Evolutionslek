@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Evolutionslek</string>
+    <string name="start_button">Start</string>
+    <string name="animal_1_button">Pedro</string>
+    <string name="animal_2_button">animal_2</string>
+    <string name="animal_3_button">animal_3</string>
+    <string name="animal_4_button">animal_4</string>
+    <string name="name_input">Namn:</string>
 </resources>
