@@ -1,8 +1,12 @@
 package com.example.evolutionslek;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.lang.Math;
 
-public class Animals {
+public class Animals implements Parcelable {
+    Animals(){}
     int mass;   //1-100
     int horns;  //0-10
     int speed;  //0-100
@@ -11,7 +15,52 @@ public class Animals {
     int health; //0-100
     int claws;  //0-10
     int attack; //calcuated
+    int food;
     boolean herbivore;
+
+    protected Animals(Parcel in) {
+        mass = in.readInt();
+        horns = in.readInt();
+        speed = in.readInt();
+        defense = in.readInt();
+        maxHealth = in.readInt();
+        health = in.readInt();
+        claws = in.readInt();
+        attack = in.readInt();
+        food = in.readInt();
+        herbivore = in.readByte() != 0;
+    }
+
+    public static final Creator<Animals> CREATOR = new Creator<Animals>() {
+        @Override
+        public Animals createFromParcel(Parcel in) {
+            return new Animals(in);
+        }
+
+        @Override
+        public Animals[] newArray(int size) {
+            return new Animals[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mass);
+        dest.writeInt(horns);
+        dest.writeInt(speed);
+        dest.writeInt(defense);
+        dest.writeInt(maxHealth);
+        dest.writeInt(health);
+        dest.writeInt(claws);
+        dest.writeInt(attack);
+        dest.writeInt(food);
+        dest.writeByte((byte) (herbivore ? 1 : 0));
+    }
 }
 
 class Husmus extends Animals {
@@ -24,6 +73,7 @@ class Husmus extends Animals {
         health = maxHealth;
         claws = 1;
         attack = (int) Math.round(Math.sqrt(mass)*horns);
+        food = 0;
         herbivore = true;
     }
 }
@@ -37,6 +87,7 @@ class Unicorn extends Animals {
         health = maxHealth;
         claws = 0;
         attack = (int) Math.round(Math.sqrt(mass)*horns);
+        food = 0;
         herbivore = true;
     }
 }
@@ -50,6 +101,7 @@ class Pedro extends Animals {
         health = maxHealth;
         claws = 7;
         attack = (int) Math.round(Math.sqrt(mass)*horns);
+        food = 0;
         herbivore = false;
     }
 }
@@ -63,6 +115,7 @@ class Gruffalo extends Animals {
         health = maxHealth;
         claws = 9;
         attack = (int) Math.round(Math.sqrt(mass)*horns);
+        food = 0;
         herbivore = false;
     }
 }
