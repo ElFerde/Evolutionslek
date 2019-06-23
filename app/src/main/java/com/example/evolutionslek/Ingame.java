@@ -21,12 +21,16 @@ public class Ingame extends AppCompatActivity {
         switch (animal){
             case "1":
                 djur = new Husmus();
+                break;
             case "2":
                 djur = new Unicorn();
+                break;
             case "3":
                 djur = new Pedro();
+                break;
             case "4":
                 djur = new Gruffalo();
+                break;
         }
         a = Integer.toString(djur.mass);
 
