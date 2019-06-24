@@ -12,6 +12,7 @@ import static com.example.evolutionslek.Ingame.ANIMAL;
 public class EndOfTurn extends AppCompatActivity {
     Animals djur;
     Animals animal;
+    Boolean klar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,16 +30,20 @@ public class EndOfTurn extends AppCompatActivity {
     }
 
     public void nextTurn(View view) {
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra("result", animal);
-        setResult(Activity.RESULT_OK, returnIntent);
-        finish();
+        if(djur.food > djur.mass) {
+            Intent returnIntent = new Intent();
+            returnIntent.putExtra("result", animal);
+            klar = true;
+            setResult(Activity.RESULT_OK, returnIntent);
+            finish();
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "not enough food", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void cancelled(View view) {
-        setResult(Activity.RESULT_CANCELED);
-        Toast.makeText(getApplicationContext(), djur.food, Toast.LENGTH_SHORT).show();
-
+        klar = false;
         finish();
     }
 
