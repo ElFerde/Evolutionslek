@@ -14,7 +14,6 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import static com.example.evolutionslek.Ingame.ANIMAL;
 
 public class Eating extends AppCompatActivity implements ZXingScannerView.ResultHandler {
-    boolean done = false;
     private ZXingScannerView zXingScannerView;
     Intent intent = getIntent();
     Animals djur;
@@ -43,18 +42,16 @@ public class Eating extends AppCompatActivity implements ZXingScannerView.Result
     @Override
     public void handleResult(Result result){
         String data = result.getText();
-        String[]data2 = data.split(" ");
+        String[]data2 = data.split(",");
         //add function of stats
         Intent returnIntent = new Intent();
         returnIntent.putExtra("result",data2[1]);
-        done = true;
         setResult(Activity.RESULT_OK,returnIntent);
+        finish();
 
     }
     public void finish(View view){
-        if (done == false){
-            setResult(RESULT_CANCELED);
-        }
+        setResult(RESULT_CANCELED);
         finish();
     }
 }
