@@ -42,16 +42,19 @@ public class Eating extends AppCompatActivity implements ZXingScannerView.Result
     @Override
     public void handleResult(Result result){
         String data = result.getText();
+
         String[]data2 = data.split(",");
+        Toast.makeText(getApplicationContext(), data2[0], Toast.LENGTH_SHORT).show();
+
         //add function of stats
         Intent returnIntent = new Intent();
-        returnIntent.putExtra("result",data2[1]);
+        returnIntent.putExtra("result",data2[0]);
         setResult(Activity.RESULT_OK,returnIntent);
         finish();
 
     }
     public void finish(View view){
-        setResult(RESULT_CANCELED);
+        setResult(Activity.RESULT_CANCELED);
         finish();
     }
 }

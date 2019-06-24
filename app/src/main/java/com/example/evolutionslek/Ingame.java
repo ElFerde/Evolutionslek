@@ -46,7 +46,7 @@ public class Ingame extends AppCompatActivity {
     }
 
     public void breed(View view) {
-        Intent intent = new Intent(this, Breeding.class);
+        Intent intent = new Intent(this, EndOfTurn.class);
         intent.putExtra(ANIMAL, djur);
         startActivityForResult(intent, 1);
     }
@@ -64,17 +64,17 @@ public class Ingame extends AppCompatActivity {
 
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == RESULT_OK){
-            if(resultCode == 1){
+        if(resultCode == RESULT_OK){
+            if(requestCode == 1){
                 djur = data.getParcelableExtra("result");
 
             }
 
-            if(resultCode == 2){
+            if(requestCode == 2){
                 djur.food += Integer.parseInt(data.getStringExtra("result"));
             }
 
-            if(resultCode == 3){
+            if(requestCode == 3){
                 djur = data.getParcelableExtra("result");
             }
         }

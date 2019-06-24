@@ -38,5 +38,6 @@ public class IsDead extends AppCompatActivity implements ZXingScannerView.Result
         djur.herbivore = Boolean.parseBoolean(data2[7]);
         Intent returnIntent = new Intent();
         returnIntent.putExtra("result", djur);
+        finish();
     }
 }
