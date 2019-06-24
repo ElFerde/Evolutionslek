@@ -51,10 +51,14 @@ public class Breeding extends AppCompatActivity {
         }
     }
 
-    public void scan(View view) {   // when scan button i pressed, calls Scanning class and passes on animal
+    public void scan(View view) {
+
+        // when scan button pressed, calls Scanning class and passes on animal
         Intent intent = new Intent(this, Scanning.class);
         intent.putExtra("djur", animal);
         startActivityForResult(intent, 5);
+
+
     }
 
     public void cancelled(View view) {
@@ -75,9 +79,22 @@ public class Breeding extends AppCompatActivity {
             if (requestCode == 5) {
                 klar = true;
                 Toast.makeText(getApplicationContext(), Boolean.toString(klar), Toast.LENGTH_SHORT).show();
-                Animals djur = data.getParcelableExtra("result");
+                Animals djur = data.getParcelableExtra("result"); // fetches scanned animal
+
+                Animals nyttDjur = new Animals();
+                Random r = new Random();
+                //sets stats of the new animal, based on stats of the old animal and the scanned animal
+                nyttDjur.mass = (int) Math.round((r.nextGaussian()+4)*(djur.mass+animal.mass)/4);
+                nyttDjur.horns =(int) Math.round((r.nextGaussian()+4)*(djur.horns+animal.horns)/4);
+                nyttDjur.speed =(int) Math.round((r.nextGaussian()+4)*(djur.speed+animal.mass)/4);
+                nyttDjur.defense=(int) Math.round((r.nextGaussian()+4)*(djur.defense+animal.mass)/4);
+                nyttDjur.maxHealth =(int) Math.round((r.nextGaussian()+4)*(djur.maxHealth+animal.mass)/4);
+                nyttDjur.claws =(int) Math.round((r.nextGaussian()+4)*(djur.claws+animal.mass)/4);
+                nyttDjur.attack =(int) Math.round((r.nextGaussian()+4)*(djur.attack+animal.mass)/4);
+                nyttDjur.herbivore = djur.herbivore;
+
                 Intent returnIntent = new Intent();
-                returnIntent.putExtra("result", djur);
+                returnIntent.putExtra("result", nyttDjur);
                 setResult(Activity.RESULT_OK, returnIntent);
             }
         }

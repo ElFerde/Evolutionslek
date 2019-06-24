@@ -30,37 +30,39 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
         String data = result.getText(); // gets content of qr code
         Toast.makeText(getApplicationContext(), data, Toast.LENGTH_SHORT).show(); // convert to string
         String[] data2 = data.split(","); // split to array of strings
-        Animals djur = new Animals(); //create new animal
-        double a = Integer.parseInt(data2[0]); //set variables a to h to stats of the old animal
-        double b = Integer.parseInt(data2[1]);
-        double c = Integer.parseInt(data2[2]);
-        double d = Integer.parseInt(data2[3]);
-        double e = Integer.parseInt(data2[4]);
-        double f = Integer.parseInt(data2[5]);
-        double g = Integer.parseInt(data2[6]);
-        boolean h = Boolean.parseBoolean(data2[7]);
+        //Animals nyttDjur = new Animals(); //create new animal
+
+        Animals scannedAnimal = new Animals();
+        scannedAnimal.mass = Integer.parseInt(data2[0]); //set variables a to h to stats of the old animal
+        scannedAnimal.horns = Integer.parseInt(data2[1]);
+        scannedAnimal.speed = Integer.parseInt(data2[2]);
+        scannedAnimal.defense = Integer.parseInt(data2[3]);
+        scannedAnimal.maxHealth = Integer.parseInt(data2[4]);
+        scannedAnimal.claws = Integer.parseInt(data2[5]);
+        scannedAnimal.attack = Integer.parseInt(data2[6]);
+        scannedAnimal.herbivore = Boolean.parseBoolean(data2[7]);
 
         Intent intent = getIntent();
         animal = intent.getParcelableExtra("djur"); // fetches the old animal
         Random r = new Random();
 
         //sets stats of the new animal, based on stats of the old animal and the scanned animal
-        djur.mass = (int) Math.round(r.nextGaussian()*10+(a+animal.mass)/2);
-        djur.horns =(int) Math.round(r.nextGaussian()*10+(b+animal.horns)/2);
-        djur.speed =(int) Math.round(r.nextGaussian()*10+(c+animal.speed)/2);
-        djur.defense=(int) Math.round(r.nextGaussian()*10+(d+animal.defense)/2);
-        djur.maxHealth =(int) Math.round(r.nextGaussian()*10+(e+animal.maxHealth)/2);
-        djur.claws =(int) Math.round(r.nextGaussian()*10+(f+animal.claws)/2);
-        djur.attack =(int) Math.round(r.nextGaussian()*10+(g+animal.attack)/2);
-        djur.herbivore = h;
+        //nyttDjur.mass = (int) Math.round(r.nextGaussian()*10+(a+animal.mass)/2);
+        //nyttDjur.horns =(int) Math.round(r.nextGaussian()*10+(b+animal.horns)/2);
+        //nyttDjur.speed =(int) Math.round(r.nextGaussian()*10+(c+animal.speed)/2);
+        //nyttDjur.defense=(int) Math.round(r.nextGaussian()*10+(d+animal.defense)/2);
+        //nyttDjur.maxHealth =(int) Math.round(r.nextGaussian()*10+(e+animal.maxHealth)/2);
+        //nyttDjur.claws =(int) Math.round(r.nextGaussian()*10+(f+animal.claws)/2);
+        //nyttDjur.attack =(int) Math.round(r.nextGaussian()*10+(g+animal.attack)/2);
+        //nyttDjur.herbivore = h;
 
         Toast.makeText(getApplicationContext(), Integer.toString(animal.food), Toast.LENGTH_SHORT).show();
-        djur.food = animal.food; //sets food of the new animal to food of the old animal
+        //nyttDjur.food = animal.food; //sets food of the new animal to food of the old animal
 
         //Toast.makeText(getApplicationContext(), djur.food, Toast.LENGTH_SHORT).show();
 
         Intent returnIntent = new Intent();
-        returnIntent.putExtra("result", djur);
+        returnIntent.putExtra("result", scannedAnimal);
         setResult(Activity.RESULT_OK, returnIntent);
         finish();
     }
