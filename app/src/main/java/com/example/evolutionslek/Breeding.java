@@ -32,10 +32,15 @@ public class Breeding extends AppCompatActivity {
 
         Intent intent = getIntent();
         animal = intent.getParcelableExtra("djur");
+
         ImageView imageView = (ImageView) findViewById(R.id.imageView2);
+
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+
+        //creates string to display as qr code
         String text = (Integer.toString(animal.mass) + "," + Integer.toString(animal.horns) + "," + Integer.toString(animal.speed) + "," + Integer.toString(animal.defense) + "," + Integer.toString(animal.maxHealth) + "," + Integer.toString(animal.claws) + "," + Integer.toString(animal.attack) + "," + Boolean.toString(animal.herbivore));
 
+        //create the qr code and display it on the screen
         try {
             BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 200, 200);
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
@@ -46,7 +51,7 @@ public class Breeding extends AppCompatActivity {
         }
     }
 
-    public void scan(View view) {
+    public void scan(View view) {   // when scan button i pressed, calls Scanning class and passes on animal
         Intent intent = new Intent(this, Scanning.class);
         intent.putExtra("djur", animal);
         startActivityForResult(intent, 5);
@@ -59,7 +64,7 @@ public class Breeding extends AppCompatActivity {
         finish();
     }
 
-    public void end(View view) {
+    public void end(View view) { //when done button is pressed, calls finish() if klar==true
         if (klar == true) {
             finish();
         }
@@ -73,7 +78,7 @@ public class Breeding extends AppCompatActivity {
                 Animals djur = data.getParcelableExtra("result");
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("result", djur);
-                setResult(Activity.RESULT_OK,returnIntent);
+                setResult(Activity.RESULT_OK, returnIntent);
             }
         }
     }
