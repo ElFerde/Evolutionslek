@@ -46,11 +46,11 @@ public class Breeding extends AppCompatActivity {
         }
     }
 
-    public void scan(View view) {
+    /*public void scan(View view) {
         Intent intent = new Intent(this, Scanning.class);
         intent.putExtra("djur", animal);
         startActivityForResult(intent, 5);
-    }
+    }*/
 
     public void cancelled(View view) {
         Intent intent = new Intent();
@@ -65,7 +65,7 @@ public class Breeding extends AppCompatActivity {
         }
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    /*protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             if (requestCode == 5) {
                 klar = true;
@@ -76,5 +76,5 @@ public class Breeding extends AppCompatActivity {
                 setResult(Activity.RESULT_OK,returnIntent);
             }
         }
-    }
+    }*/
 }

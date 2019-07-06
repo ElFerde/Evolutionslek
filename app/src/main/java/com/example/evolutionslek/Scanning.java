@@ -16,12 +16,14 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class Scanning extends AppCompatActivity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView zXingScannerView;
-    Animals animal;
+    Animals parent = new Animals();
+    Animals djur = new Animals();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanning);
+        parent.maxHealth=0;
         scan();
     }
 
@@ -30,7 +32,6 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
         String data = result.getText();
         Toast.makeText(getApplicationContext(), data, Toast.LENGTH_SHORT).show();
         String[] data2 = data.split(",");
-        Animals djur = new Animals();
         double a = Integer.parseInt(data2[0]);
         double b = Integer.parseInt(data2[1]);
         double c = Integer.parseInt(data2[2]);
@@ -40,24 +41,38 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
         double g = Integer.parseInt(data2[6]);
         boolean h = Boolean.parseBoolean(data2[7]);
 
-        Intent intent = getIntent();
-        animal = intent.getParcelableExtra("djur");
-        Random r = new Random();
-        djur.mass = (int) Math.round(r.nextGaussian()*10+(a+animal.mass)/2);
-        djur.horns =(int) Math.round(r.nextGaussian()*10+(b+animal.horns)/2);
-        djur.speed =(int) Math.round(r.nextGaussian()*10+(c+animal.speed)/2);
-        djur.defense=(int) Math.round(r.nextGaussian()*10+(d+animal.defense)/2);
-        djur.maxHealth =(int) Math.round(r.nextGaussian()*10+(e+animal.maxHealth)/2);
-        djur.claws =(int) Math.round(r.nextGaussian()*10+(f+animal.claws)/2);
-        djur.attack =(int) Math.round(r.nextGaussian()*10+(g+animal.attack)/2);
-        djur.herbivore = h;
-        Toast.makeText(getApplicationContext(), Integer.toString(animal.food), Toast.LENGTH_SHORT).show();
-        djur.food = animal.food;
+
+        //Toast.makeText(getApplicationContext(), Integer.toString(animal.food), Toast.LENGTH_SHORT).show();
+        //djur.food = animal.food;
         //Toast.makeText(getApplicationContext(), djur.food, Toast.LENGTH_SHORT).show();
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra("result", djur);
-        setResult(Activity.RESULT_OK, returnIntent);
-        finish();
+
+        if(parent.maxHealth==0){ //
+            parent.mass = (int) a;
+            parent.horns = (int) b;
+            parent.speed = (int) c;
+            parent.defense = (int) d;
+            parent.maxHealth = (int) e;
+            parent.claws = (int) f;
+            parent.attack = (int) g;
+            parent.herbivore = h;
+
+            scan();
+        }
+        else{
+            Random r = new Random();
+            djur.mass = (int) Math.round(r.nextGaussian()*10+(a+parent.mass)/2);
+            djur.horns =(int) Math.round(r.nextGaussian()*10+(b+parent.horns)/2);
+            djur.speed =(int) Math.round(r.nextGaussian()*10+(c+parent.speed)/2);
+            djur.defense=(int) Math.round(r.nextGaussian()*10+(d+parent.defense)/2);
+            djur.maxHealth =(int) Math.round(r.nextGaussian()*10+(e+parent.maxHealth)/2);
+            djur.claws =(int) Math.round(r.nextGaussian()*10+(f+parent.claws)/2);
+            djur.attack =(int) Math.round(r.nextGaussian()*10+(g+parent.attack)/2);
+
+            Intent returnIntent = new Intent();
+            returnIntent.putExtra("result", djur);
+            setResult(Activity.RESULT_OK, returnIntent);
+            finish();
+        }
     }
     @Override
     protected void onPause() {
