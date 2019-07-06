@@ -74,6 +74,7 @@ public class Breeding extends AppCompatActivity {
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("result", djur);
                 setResult(Activity.RESULT_OK,returnIntent);
+
             }
         }
     }

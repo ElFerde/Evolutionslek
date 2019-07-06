@@ -54,7 +54,6 @@ public class Eating extends AppCompatActivity implements ZXingScannerView.Result
 
     }
     public void finish(View view){
-        setResult(Activity.RESULT_CANCELED);
         finish();
     }
 }

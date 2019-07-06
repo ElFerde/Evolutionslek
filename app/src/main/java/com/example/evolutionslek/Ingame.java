@@ -71,7 +71,7 @@ public class Ingame extends AppCompatActivity {
             }
 
             if(requestCode == 2){
-                djur.food += Integer.parseInt(data.getStringExtra("result"));
+                //int a = Integer.parseInt(data.getStringExtra("result"));
             }
 
             if(requestCode == 3){
