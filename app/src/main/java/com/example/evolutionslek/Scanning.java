@@ -46,7 +46,7 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
         //djur.food = animal.food;
         //Toast.makeText(getApplicationContext(), djur.food, Toast.LENGTH_SHORT).show();
 
-        if(parent.maxHealth==0){ //
+        if(parent.maxHealth==0){ // parent max health is set to 0 in onCreate()
             parent.mass = (int) a;
             parent.horns = (int) b;
             parent.speed = (int) c;
@@ -56,7 +56,7 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
             parent.attack = (int) g;
             parent.herbivore = h;
 
-            scan();
+            scan(); //this may or may not be a good idea
         }
         else{
             Random r = new Random();
