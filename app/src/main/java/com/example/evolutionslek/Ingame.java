@@ -75,7 +75,7 @@ public class Ingame extends AppCompatActivity {
             }
 
             if(requestCode == 3){
-                djur = data.getParcelableExtra("result");
+                djur = data.getParcelableExtra("animal");
             }
         }
         updateTraits();

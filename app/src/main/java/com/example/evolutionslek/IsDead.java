@@ -42,13 +42,11 @@ public class IsDead extends AppCompatActivity {
                 String text = (Integer.toString(djur.mass) + "," + Integer.toString(djur.horns) + "," + Integer.toString(djur.speed) + "," + Integer.toString(djur.defense) + "," + Integer.toString(djur.maxHealth) + "," + Integer.toString(djur.claws) + "," + Integer.toString(djur.attack) + "," + Boolean.toString(djur.herbivore));
                 Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(this, Ingame.class); //copied the lines to create yourself from startscreen
-                intent.putExtra("animal", "1" );
-                startActivity(intent);
-
-                /*Intent returnIntent = new Intent();
-                returnIntent.putExtra("result", djur);
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("animal", djur);
                 setResult(Activity.RESULT_OK,returnIntent);
+                finish();
+                /*
 
                 Animals parent1;
                 Animals parent2;
