@@ -2,10 +2,18 @@ package com.example.evolutionslek;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import static com.example.evolutionslek.Ingame.ANIMAL;
 
@@ -22,9 +30,18 @@ public class EndOfTurn extends AppCompatActivity {
         Intent i = getIntent();
         djur = i.getParcelableExtra(Ingame.ANIMAL);
         if(djur.food >= minBreeding) {
-            Intent intent = new Intent(this, Breeding.class);
-            intent.putExtra("djur", djur);
-            startActivityForResult(intent, 4);
+            ImageView imageView = (ImageView) findViewById(R.id.imageView3);
+            MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+            String text = (Integer.toString(djur.mass) + "," + Integer.toString(djur.horns) + "," + Integer.toString(djur.speed) + "," + Integer.toString(djur.defense) + "," + Integer.toString(djur.maxHealth) + "," + Integer.toString(djur.claws) + "," + Integer.toString(djur.attack) + "," + Boolean.toString(djur.herbivore));
+
+            try {
+                BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 200, 200);
+                BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+                Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+                imageView.setImageBitmap(bitmap);
+            } catch (WriterException e) {
+                e.printStackTrace();
+            }
             Intent returnIntent = new Intent();
             returnIntent.putExtra("result", "breed");
             klar = true;
@@ -53,6 +70,11 @@ public class EndOfTurn extends AppCompatActivity {
     }
 
     public void nextTurn(View view) {
+        finish();
+    }
+    public void end(View view) {
+        Intent returnIntent = new Intent();
+        setResult(Activity.RESULT_CANCELED, returnIntent);
         finish();
     }
 }
