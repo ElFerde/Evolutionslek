@@ -11,8 +11,9 @@ import static com.example.evolutionslek.Ingame.ANIMAL;
 
 public class EndOfTurn extends AppCompatActivity {
     Animals djur;
-    Animals animal;
     Boolean klar;
+    public static int minFood = 10;
+    public static int minBreeding = 15;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,28 @@ public class EndOfTurn extends AppCompatActivity {
         setContentView(R.layout.activity_end_of_turn);
         Intent i = getIntent();
         djur = i.getParcelableExtra(Ingame.ANIMAL);
+        if(djur.food >= minBreeding) {
+            Intent intent = new Intent(this, Breeding.class);
+            intent.putExtra("djur", djur);
+            startActivityForResult(intent, 4);
+            Intent returnIntent = new Intent();
+            returnIntent.putExtra("result", "breed");
+            klar = true;
+            setResult(Activity.RESULT_OK, returnIntent);
+        }
+        else if(djur.food >= minFood) {
+            Intent returnIntent = new Intent();
+            returnIntent.putExtra("result", "good");
+            klar = true;
+            setResult(Activity.RESULT_OK, returnIntent);
+        }
+        else {
+            Intent returnIntent = new Intent();
+            returnIntent.putExtra("result", "bad");
+            klar = true;
+            setResult(Activity.RESULT_OK, returnIntent);
+            Toast.makeText(getApplicationContext(), "Hej", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void breed(View view) {
@@ -30,28 +53,6 @@ public class EndOfTurn extends AppCompatActivity {
     }
 
     public void nextTurn(View view) {
-        if(djur.food > djur.mass) {
-            Intent returnIntent = new Intent();
-            returnIntent.putExtra("result", animal);
-            klar = true;
-            setResult(Activity.RESULT_OK, returnIntent);
-            finish();
-        }
-        else{
-            Toast.makeText(getApplicationContext(), "not enough food", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public void cancelled(View view) {
-        klar = false;
         finish();
-    }
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == 4 && resultCode == RESULT_OK){
-             animal = data.getParcelableExtra("result");
-            Toast.makeText(getApplicationContext(), "Hejjj", Toast.LENGTH_SHORT).show();
-        }
-
     }
 }

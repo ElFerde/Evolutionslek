@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -61,12 +62,25 @@ public class Ingame extends AppCompatActivity {
         Intent intent = new Intent(this, IsDead.class);
         startActivityForResult(intent, 3);
     }
+    public void die() {
+        Intent intent = new Intent(this, IsDead.class);
+        startActivityForResult(intent, 3);
+    }
 
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == RESULT_OK){
             if(requestCode == 1){
-                djur = data.getParcelableExtra("result");
+                Toast.makeText(getApplicationContext(), data.getStringExtra("result"), Toast.LENGTH_SHORT).show();
+                if(data.getStringExtra("result").equals("bad")){
+                    die();
+                }
+                else if(data.getStringExtra("result").equals("breed")){
+                    djur.food -= EndOfTurn.minBreeding;
+                }
+                else{
+                    djur.food -= EndOfTurn.minFood;
+                }
 
             }
 

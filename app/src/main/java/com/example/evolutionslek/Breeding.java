@@ -52,17 +52,9 @@ public class Breeding extends AppCompatActivity {
         startActivityForResult(intent, 5);
     }*/
 
-    public void cancelled(View view) {
-        Intent intent = new Intent();
-        intent.putExtra("klar", false);
-        setResult(Activity.RESULT_OK, intent);
-        finish();
-    }
 
     public void end(View view) {
-        if (klar == true) {
-            finish();
-        }
+        finish();
     }
 
     /*protected void onActivityResult(int requestCode, int resultCode, Intent data) {
