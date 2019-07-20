@@ -2,17 +2,17 @@ package com.example.evolutionslek;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.google.zxing.Result;
 
 import java.util.Random;
-import java.lang.Math;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
+
+//import javax.xml.transform.Result;
 
 public class Scanning extends AppCompatActivity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView zXingScannerView;
