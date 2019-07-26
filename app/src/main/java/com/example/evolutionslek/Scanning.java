@@ -68,9 +68,10 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
     }
     public int newStats(int stat1, int stat2){
         double random1 = Math.random();
-        double random2 = Math.random()/2.5 + 0.8; //creates random between 0.8 - 1.2, should probably be done in a better way
+        double random3 = Math.random();
+        double random2 = Math.random()*0.4 + 0.8; //creates random between 0.8 - 1.2, should probably be done in a better way
         double result;
-        result = (stat1*random1 + stat2*(1-random1))*random2;
+        result = (stat1*random1 + stat2*random3)*random2;
         return (int) Math.round(result);
     }
     @Override

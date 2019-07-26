@@ -39,7 +39,6 @@ public class Breeding extends AppCompatActivity {
         }
     }
 
-
     public void end(View view) {
         finish();
     }
