@@ -48,7 +48,6 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
             parent.maxHealth = (int) e;
             parent.claws = (int) f;
             parent.attack = (int) g;
-            parent.herbivore = h;
 
             scan();
         }
@@ -61,6 +60,7 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
             djur.maxHealth =(int) Math.round(r.nextGaussian()*10+(e+parent.maxHealth)/2);
             djur.claws =(int) Math.round(r.nextGaussian()*10+(f+parent.claws)/2);
             djur.attack =(int) Math.round(r.nextGaussian()*10+(g+parent.attack)/2);
+            djur.herbivore=h;
 
             Intent returnIntent = new Intent();
             returnIntent.putExtra("result", djur);
