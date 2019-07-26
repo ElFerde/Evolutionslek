@@ -55,9 +55,10 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
             djur.speed = newStats(parent.speed, b);
             djur.defense= newStats(parent.defense, b);
             djur.maxHealth = newStats(parent.maxHealth, b);
+            djur.health = djur.maxHealth;
             djur.claws = newStats(parent.claws, b);
             djur.attack = newStats(parent.attack, b);
-            djur.herbivore=h;
+            djur.herbivore = h;
 
             Intent returnIntent = new Intent();
             returnIntent.putExtra("result", djur);
@@ -67,7 +68,7 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
     }
     public int newStats(int stat1, int stat2){
         double random1 = Math.random();
-        double random2 = Math.random()/2 + 0.75; //creates random between 0.75 - 1.25, should probably be done in a better way
+        double random2 = Math.random()/2.5 + 0.8; //creates random between 0.8 - 1.2, should probably be done in a better way
         double result;
         result = (stat1*random1 + stat2*(1-random1))*random2;
         return (int) Math.round(result);
