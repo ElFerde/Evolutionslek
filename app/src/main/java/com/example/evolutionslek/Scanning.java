@@ -28,13 +28,13 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
         String data = result.getText();
         Toast.makeText(getApplicationContext(), data, Toast.LENGTH_SHORT).show();
         String[] data2 = data.split(",");
-        int a = Integer.parseInt(data2[0]);
-        int b = Integer.parseInt(data2[1]);
-        int c = Integer.parseInt(data2[2]);
-        int d = Integer.parseInt(data2[3]);
-        int e = Integer.parseInt(data2[4]);
-        int f = Integer.parseInt(data2[5]);
-        int g = Integer.parseInt(data2[6]);
+        double a = Integer.parseInt(data2[0]);
+        double b = Integer.parseInt(data2[1]);
+        double c = Integer.parseInt(data2[2]);
+        double d = Integer.parseInt(data2[3]);
+        double e = Integer.parseInt(data2[4]);
+        double f = Integer.parseInt(data2[5]);
+        double g = Integer.parseInt(data2[6]);
         boolean h = Boolean.parseBoolean(data2[7]);
 
 
@@ -66,13 +66,13 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
             finish();
         }
     }
-    public int newStats(int stat1, int stat2){
+    public double newStats(double stat1, double stat2){
         double random1 = Math.random();
         double random3 = Math.random();
         double random2 = Math.random()*0.4 + 0.8; //creates random between 0.8 - 1.2, should probably be done in a better way
         double result;
         result = (stat1*random1 + stat2*random3)/(random1+random3)*random2;
-        return (int) Math.round(result);
+        return result;
     }
     @Override
     protected void onPause() {

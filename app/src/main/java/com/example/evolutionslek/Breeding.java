@@ -27,7 +27,7 @@ public class Breeding extends AppCompatActivity {
         animal = intent.getParcelableExtra("djur");
         ImageView imageView = (ImageView) findViewById(R.id.imageView2);
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
-        String text = (Integer.toString(animal.mass) + "," + Integer.toString(animal.horns) + "," + Integer.toString(animal.speed) + "," + Integer.toString(animal.defense) + "," + Integer.toString(animal.maxHealth) + "," + Integer.toString(animal.claws) + "," + Integer.toString(animal.attack) + "," + Boolean.toString(animal.herbivore));
+        String text = (Double.toString(animal.mass) + "," + Double.toString(animal.horns) + "," + Double.toString(animal.speed) + "," + Double.toString(animal.defense) + "," + Double.toString(animal.maxHealth) + "," + Double.toString(animal.claws) + "," + Double.toString(animal.attack) + "," + Boolean.toString(animal.herbivore));
 
         try {
             BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 200, 200);
