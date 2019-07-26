@@ -52,12 +52,12 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
         else{
             djur.mass = newStats(parent.mass, a);
             djur.horns = newStats(parent.horns, b);
-            djur.speed = newStats(parent.speed, b);
-            djur.defense= newStats(parent.defense, b);
-            djur.maxHealth = newStats(parent.maxHealth, b);
+            djur.speed = newStats(parent.speed, c);
+            djur.defense= newStats(parent.defense, d);
+            djur.maxHealth = newStats(parent.maxHealth, e);
             djur.health = djur.maxHealth;
-            djur.claws = newStats(parent.claws, b);
-            djur.attack = newStats(parent.attack, b);
+            djur.claws = newStats(parent.claws, f);
+            djur.attack = newStats(parent.attack, g);
             djur.herbivore = h;
 
             Intent returnIntent = new Intent();
