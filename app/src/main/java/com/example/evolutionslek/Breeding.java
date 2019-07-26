@@ -1,25 +1,18 @@
 package com.example.evolutionslek;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.Result;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
-
-import java.util.Random;
-
-import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class Breeding extends AppCompatActivity {
     Animals animal;
@@ -46,27 +39,8 @@ public class Breeding extends AppCompatActivity {
         }
     }
 
-    /*public void scan(View view) {
-        Intent intent = new Intent(this, Scanning.class);
-        intent.putExtra("djur", animal);
-        startActivityForResult(intent, 5);
-    }*/
-
 
     public void end(View view) {
         finish();
     }
-
-    /*protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK) {
-            if (requestCode == 5) {
-                klar = true;
-                Toast.makeText(getApplicationContext(), Boolean.toString(klar), Toast.LENGTH_SHORT).show();
-                Animals djur = data.getParcelableExtra("result");
-                Intent returnIntent = new Intent();
-                returnIntent.putExtra("result", djur);
-                setResult(Activity.RESULT_OK,returnIntent);
-            }
-        }
-    }*/
 }

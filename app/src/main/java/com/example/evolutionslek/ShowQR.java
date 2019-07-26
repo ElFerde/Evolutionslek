@@ -23,7 +23,7 @@ public class ShowQR extends AppCompatActivity {
         generateQR(Integer.toString(djur.mass)+","+Integer.toString(djur.horns)+","+Integer.toString(djur.speed)+","+Integer.toString(djur.defense)+","+Integer.toString(djur.health)+","+Integer.toString(djur.claws));
     }
     private void generateQR(String text){
-        ImageView imageView = (ImageView) findViewById(R.id.imageView);
+        ImageView imageView = findViewById(R.id.imageView);
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         try {
             BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE,200,200);

@@ -1,17 +1,11 @@
 package com.example.evolutionslek;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
 
-import com.google.zxing.Result;
-
-import me.dm7.barcodescanner.zxing.ZXingScannerView;
-
-public class MainActivity extends AppCompatActivity /*implements ZXingScannerView.ResultHandler*/ {
-    //private ZXingScannerView zXingScannerView;
+public class MainActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,24 +17,4 @@ public class MainActivity extends AppCompatActivity /*implements ZXingScannerVie
         Intent intent = new Intent(this,StartScreen.class);
         startActivity(intent);
     }
-
-    /*public void scan(View view){
-        zXingScannerView = new ZXingScannerView(getApplicationContext());
-        setContentView(zXingScannerView);
-        zXingScannerView.setResultHandler(this);
-        zXingScannerView.startCamera();
-
-    }
-
-    @Override
-    protected void onPause(){
-        super.onPause();
-        zXingScannerView.stopCamera();
-    }
-
-    @Override
-    public void handleResult(Result result){
-        Toast.makeText(getApplicationContext(), result.getText(), Toast.LENGTH_SHORT).show();
-        zXingScannerView.resumeCameraPreview(this);
-    }*/
 }

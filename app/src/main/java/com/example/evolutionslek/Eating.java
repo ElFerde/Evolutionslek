@@ -15,7 +15,6 @@ import static com.example.evolutionslek.Ingame.ANIMAL;
 
 public class Eating extends AppCompatActivity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView zXingScannerView;
-    Intent intent = getIntent();
     Animals djur;
 
     @Override

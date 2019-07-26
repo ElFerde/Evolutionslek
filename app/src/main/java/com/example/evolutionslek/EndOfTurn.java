@@ -15,8 +15,6 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
-import static com.example.evolutionslek.Ingame.ANIMAL;
-
 public class EndOfTurn extends AppCompatActivity {
     Animals djur;
     Boolean klar;
@@ -30,7 +28,7 @@ public class EndOfTurn extends AppCompatActivity {
         Intent i = getIntent();
         djur = i.getParcelableExtra(Ingame.ANIMAL);
         if(djur.food >= minBreeding) {
-            ImageView imageView = (ImageView) findViewById(R.id.imageView3);
+            ImageView imageView = findViewById(R.id.imageView3);
             MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
             String text = (Integer.toString(djur.mass) + "," + Integer.toString(djur.horns) + "," + Integer.toString(djur.speed) + "," + Integer.toString(djur.defense) + "," + Integer.toString(djur.maxHealth) + "," + Integer.toString(djur.claws) + "," + Integer.toString(djur.attack) + "," + Boolean.toString(djur.herbivore));
 

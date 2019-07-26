@@ -92,16 +92,16 @@ public class Ingame extends AppCompatActivity {
         updateTraits();
     }
     void updateTraits(){
-        TextView tv1 = (TextView)findViewById(R.id.textView2);
-        TextView tv2 = (TextView)findViewById(R.id.textView3);
-        TextView tv3 = (TextView)findViewById(R.id.textView4);
-        TextView tv4 = (TextView)findViewById(R.id.textView5);
-        TextView tv5 = (TextView)findViewById(R.id.textView6);
-        TextView tv6 = (TextView)findViewById(R.id.textView7);
-        TextView tv7 = (TextView)findViewById(R.id.textView8);
-        TextView tv8 = (TextView)findViewById(R.id.textView10);
-        TextView tv9 = (TextView)findViewById(R.id.textView11);
-        TextView tv10 = (TextView)findViewById(R.id.textView12);
+        TextView tv1 = findViewById(R.id.textView2);
+        TextView tv2 = findViewById(R.id.textView3);
+        TextView tv3 = findViewById(R.id.textView4);
+        TextView tv4 = findViewById(R.id.textView5);
+        TextView tv5 = findViewById(R.id.textView6);
+        TextView tv6 = findViewById(R.id.textView7);
+        TextView tv7 = findViewById(R.id.textView8);
+        TextView tv8 = findViewById(R.id.textView10);
+        TextView tv9 = findViewById(R.id.textView11);
+        TextView tv10 =findViewById(R.id.textView12);
         tv1.setText("Mass: " +Integer.toString(djur.mass));
         tv2.setText("Horns: " +Integer.toString(djur.horns));
         tv3.setText("Speed: " +Integer.toString(djur.speed));

@@ -12,8 +12,6 @@ import java.util.Random;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
-//import javax.xml.transform.Result;
-
 public class Scanning extends AppCompatActivity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView zXingScannerView;
     Animals parent = new Animals();
@@ -42,10 +40,6 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
         boolean h = Boolean.parseBoolean(data2[7]);
 
 
-        //Toast.makeText(getApplicationContext(), Integer.toString(animal.food), Toast.LENGTH_SHORT).show();
-        //djur.food = animal.food;
-        //Toast.makeText(getApplicationContext(), djur.food, Toast.LENGTH_SHORT).show();
-
         if(parent.maxHealth==0){ // parent max health is set to 0 in onCreate()
             parent.mass = (int) a;
             parent.horns = (int) b;
@@ -56,7 +50,7 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
             parent.attack = (int) g;
             parent.herbivore = h;
 
-            scan(); //this may or may not be a good idea
+            scan();
         }
         else{
             Random r = new Random();
