@@ -9,6 +9,7 @@ public class Animals implements Parcelable {
     Animals(){}
     double mass, horns, speed, defense, maxHealth, health, claws, attack, food;
     boolean herbivore;
+    String species;
 
     protected Animals(Parcel in) {
         mass = in.readDouble();
@@ -21,6 +22,7 @@ public class Animals implements Parcelable {
         attack = in.readDouble();
         food = in.readDouble();
         herbivore = in.readByte() != 0;
+        species = in.readString();
     }
 
     public static final Creator<Animals> CREATOR = new Creator<Animals>() {
@@ -52,6 +54,7 @@ public class Animals implements Parcelable {
         dest.writeDouble(attack);
         dest.writeDouble(food);
         dest.writeByte((byte) (herbivore ? 1 : 0));
+        dest.writeString(species);
     }
 }
 
