@@ -8,8 +8,6 @@ import android.widget.Toast;
 
 import com.google.zxing.Result;
 
-import java.util.Random;
-
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class Scanning extends AppCompatActivity implements ZXingScannerView.ResultHandler {
@@ -30,36 +28,35 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
         String data = result.getText();
         Toast.makeText(getApplicationContext(), data, Toast.LENGTH_SHORT).show();
         String[] data2 = data.split(",");
-        double a = Integer.parseInt(data2[0]);
-        double b = Integer.parseInt(data2[1]);
-        double c = Integer.parseInt(data2[2]);
-        double d = Integer.parseInt(data2[3]);
-        double e = Integer.parseInt(data2[4]);
-        double f = Integer.parseInt(data2[5]);
-        double g = Integer.parseInt(data2[6]);
+        int a = Integer.parseInt(data2[0]);
+        int b = Integer.parseInt(data2[1]);
+        int c = Integer.parseInt(data2[2]);
+        int d = Integer.parseInt(data2[3]);
+        int e = Integer.parseInt(data2[4]);
+        int f = Integer.parseInt(data2[5]);
+        int g = Integer.parseInt(data2[6]);
         boolean h = Boolean.parseBoolean(data2[7]);
 
 
         if(parent.maxHealth==0){ // parent max health is set to 0 in onCreate()
-            parent.mass = (int) a;
-            parent.horns = (int) b;
-            parent.speed = (int) c;
-            parent.defense = (int) d;
-            parent.maxHealth = (int) e;
-            parent.claws = (int) f;
-            parent.attack = (int) g;
+            parent.mass = a;
+            parent.horns = b;
+            parent.speed = c;
+            parent.defense = d;
+            parent.maxHealth = e;
+            parent.claws = f;
+            parent.attack = g;
 
             scan();
         }
         else{
-            Random r = new Random();
-            djur.mass = (int) Math.round(r.nextGaussian()*10+(a+parent.mass)/2);
-            djur.horns =(int) Math.round(r.nextGaussian()*10+(b+parent.horns)/2);
-            djur.speed =(int) Math.round(r.nextGaussian()*10+(c+parent.speed)/2);
-            djur.defense=(int) Math.round(r.nextGaussian()*10+(d+parent.defense)/2);
-            djur.maxHealth =(int) Math.round(r.nextGaussian()*10+(e+parent.maxHealth)/2);
-            djur.claws =(int) Math.round(r.nextGaussian()*10+(f+parent.claws)/2);
-            djur.attack =(int) Math.round(r.nextGaussian()*10+(g+parent.attack)/2);
+            djur.mass = newStats(parent.mass, a);
+            djur.horns = newStats(parent.horns, b);
+            djur.speed = newStats(parent.speed, b);
+            djur.defense= newStats(parent.defense, b);
+            djur.maxHealth = newStats(parent.maxHealth, b);
+            djur.claws = newStats(parent.claws, b);
+            djur.attack = newStats(parent.attack, b);
             djur.herbivore=h;
 
             Intent returnIntent = new Intent();
@@ -67,6 +64,13 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
             setResult(Activity.RESULT_OK, returnIntent);
             finish();
         }
+    }
+    public int newStats(int stat1, int stat2){
+        double random1 = Math.random();
+        double random2 = Math.random()/2 + 0.75; //creates random between 0.75 - 1.25, should probably be done in a better way
+        double result;
+        result = (stat1*random1 + stat2*(1-random1))*random2;
+        return (int) Math.round(result);
     }
     @Override
     protected void onPause() {
