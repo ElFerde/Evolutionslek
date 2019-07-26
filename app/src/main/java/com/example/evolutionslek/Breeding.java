@@ -16,7 +16,6 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class Breeding extends AppCompatActivity {
     Animals animal;
-    boolean klar = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +24,7 @@ public class Breeding extends AppCompatActivity {
 
         Intent intent = getIntent();
         animal = intent.getParcelableExtra("djur");
-        ImageView imageView = (ImageView) findViewById(R.id.imageView2);
+        ImageView imageView = findViewById(R.id.imageView2);
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         String text = (Integer.toString(animal.mass) + "," + Integer.toString(animal.horns) + "," + Integer.toString(animal.speed) + "," + Integer.toString(animal.defense) + "," + Integer.toString(animal.maxHealth) + "," + Integer.toString(animal.claws) + "," + Integer.toString(animal.attack) + "," + Boolean.toString(animal.herbivore));
 
