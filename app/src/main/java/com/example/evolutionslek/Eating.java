@@ -16,7 +16,7 @@ import static com.example.evolutionslek.Ingame.ANIMAL;
 public class Eating extends AppCompatActivity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView zXingScannerView;
     Animals djur;
-    int lastPlant;
+    String lastPlant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class Eating extends AppCompatActivity implements ZXingScannerView.Result
         setContentView(R.layout.activity_eating);
         Intent intent = getIntent();
         djur = intent.getParcelableExtra(ANIMAL);
-        lastPlant = intent.getParcelableExtra("plant");
+        lastPlant = intent.getStringExtra("plant");
     }
         public void scan(View view){
         zXingScannerView = new ZXingScannerView(getApplicationContext());
@@ -48,11 +48,11 @@ public class Eating extends AppCompatActivity implements ZXingScannerView.Result
         Toast.makeText(getApplicationContext(), data2[0], Toast.LENGTH_SHORT).show();
 
         if(djur.herbivore){
-            if(Integer.parseInt(data2[1])==lastPlant){
+            if(data2[1].equals(lastPlant)){
                 finish();
             }
             else{
-                lastPlant = Integer.parseInt(data2[1]);
+                lastPlant = data2[1];
             }
         }
         else{
@@ -62,6 +62,7 @@ public class Eating extends AppCompatActivity implements ZXingScannerView.Result
         //add function of stats
         Intent returnIntent = new Intent();
         returnIntent.putExtra("result",data2[0]);
+        returnIntent.putExtra("plant",lastPlant);
         setResult(Activity.RESULT_OK,returnIntent);
         finish();
 

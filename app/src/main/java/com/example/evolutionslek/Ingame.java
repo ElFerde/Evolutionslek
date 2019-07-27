@@ -12,7 +12,7 @@ public class Ingame extends AppCompatActivity {
 
     public static String ANIMAL = "djur";
     Animals djur = new Animals();
-    int lastPlant;
+    String lastPlant = "0";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,18 +73,22 @@ public class Ingame extends AppCompatActivity {
             switch(requestCode) {
                 case 1:
                     Toast.makeText(getApplicationContext(), data.getStringExtra("result"), Toast.LENGTH_SHORT).show();
-                    if (data.getStringExtra("result").equals("bad")) {
-                        die();
-                    } else if (data.getStringExtra("result").equals("breed")) {
-                        djur.food -= EndOfTurn.minBreeding;
-                    } else {
-                        djur.food -= EndOfTurn.minFood;
+                    switch (data.getStringExtra("result")) {
+                        case "bad":
+                            die();
+                            break;
+                        case "breed":
+                            djur.food -= EndOfTurn.minBreeding;
+                            break;
+                        default:
+                            djur.food -= EndOfTurn.minFood;
+                            break;
                     }
                     break;
 
                 case 2:
                     djur.food += Integer.parseInt(data.getStringExtra("result"));
-                    lastPlant = Integer.parseInt(data.getStringExtra("plant"));
+                    lastPlant = data.getStringExtra("plant");
                     break;
 
                 case 3:
