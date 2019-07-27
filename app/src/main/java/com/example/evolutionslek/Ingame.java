@@ -1,18 +1,18 @@
 package com.example.evolutionslek;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-
-import java.util.ArrayList;
+import android.widget.Toast;
+import java.lang.Math;
 
 public class Ingame extends AppCompatActivity {
 
     public static String ANIMAL = "djur";
     Animals djur = new Animals();
+    String lastPlant = "0";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,12 +52,17 @@ public class Ingame extends AppCompatActivity {
     }
 
     public void eat(View view) {
-        Intent intent = new Intent(this, Eating.class);
-        intent.putExtra(ANIMAL, djur);
-        startActivityForResult(intent, 2);
+            Intent intent = new Intent(this, Eating.class);
+            intent.putExtra(ANIMAL, djur);
+            intent.putExtra("plant", lastPlant);
+            startActivityForResult(intent, 2);
     }
 
     public void die(View view) {
+        Intent intent = new Intent(this, IsDead.class);
+        startActivityForResult(intent, 3);
+    }
+    public void die() {
         Intent intent = new Intent(this, IsDead.class);
         startActivityForResult(intent, 3);
     }
@@ -65,41 +70,54 @@ public class Ingame extends AppCompatActivity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == RESULT_OK){
-            if(requestCode == 1){
-                djur = data.getParcelableExtra("result");
+            switch(requestCode) {
+                case 1:
+                    Toast.makeText(getApplicationContext(), data.getStringExtra("result"), Toast.LENGTH_SHORT).show();
+                    switch (data.getStringExtra("result")) {
+                        case "bad":
+                            die();
+                            break;
+                        case "breed":
+                            djur.food -= EndOfTurn.minBreeding;
+                            break;
+                        default:
+                            djur.food -= EndOfTurn.minFood;
+                            break;
+                    }
+                    break;
 
-            }
+                case 2:
+                    djur.food += Integer.parseInt(data.getStringExtra("result"));
+                    lastPlant = data.getStringExtra("plant");
+                    break;
 
-            if(requestCode == 2){
-                //int a = Integer.parseInt(data.getStringExtra("result"));
-            }
-
-            if(requestCode == 3){
-                djur = data.getParcelableExtra("result");
+                case 3:
+                    djur = data.getParcelableExtra("animal");
+                    break;
             }
         }
         updateTraits();
     }
     void updateTraits(){
-        TextView tv1 = (TextView)findViewById(R.id.textView2);
-        TextView tv2 = (TextView)findViewById(R.id.textView3);
-        TextView tv3 = (TextView)findViewById(R.id.textView4);
-        TextView tv4 = (TextView)findViewById(R.id.textView5);
-        TextView tv5 = (TextView)findViewById(R.id.textView6);
-        TextView tv6 = (TextView)findViewById(R.id.textView7);
-        TextView tv7 = (TextView)findViewById(R.id.textView8);
-        TextView tv8 = (TextView)findViewById(R.id.textView10);
-        TextView tv9 = (TextView)findViewById(R.id.textView11);
-        TextView tv10 = (TextView)findViewById(R.id.textView12);
-        tv1.setText("Mass: " +Integer.toString(djur.mass));
-        tv2.setText("Horns: " +Integer.toString(djur.horns));
-        tv3.setText("Speed: " +Integer.toString(djur.speed));
-        tv4.setText("Defense: " +Integer.toString(djur.defense));
-        tv5.setText("Max health: " +Integer.toString(djur.maxHealth));
-        tv6.setText("Health: " +Integer.toString(djur.health));
-        tv7.setText("Claws: " +Integer.toString(djur.claws));
-        tv8.setText("Attack: " +Integer.toString(djur.attack));
-        tv9.setText("Food: " +Integer.toString(djur.food));
+        TextView tv1 = findViewById(R.id.textView2);
+        TextView tv2 = findViewById(R.id.textView3);
+        TextView tv3 = findViewById(R.id.textView4);
+        TextView tv4 = findViewById(R.id.textView5);
+        TextView tv5 = findViewById(R.id.textView6);
+        TextView tv6 = findViewById(R.id.textView7);
+        TextView tv7 = findViewById(R.id.textView8);
+        TextView tv8 = findViewById(R.id.textView10);
+        TextView tv9 = findViewById(R.id.textView11);
+        TextView tv10 =findViewById(R.id.textView12);
+        tv1.setText("Mass: " +Long.toString(Math.round(djur.mass)));
+        tv2.setText("Horns: " +Long.toString(Math.round(djur.horns)));
+        tv3.setText("Speed: " +Long.toString(Math.round(djur.speed)));
+        tv4.setText("Defense: " +Long.toString(Math.round(djur.defense)));
+        tv5.setText("Max health: " +Long.toString(Math.round(djur.maxHealth)));
+        tv6.setText("Health: " +Long.toString(Math.round(djur.health)));
+        tv7.setText("Claws: " +Long.toString(Math.round(djur.claws)));
+        tv8.setText("Attack: " +Long.toString(Math.round(djur.attack)));
+        tv9.setText("Food: " +Long.toString(Math.round(djur.food)));
         if(djur.herbivore == true){
             tv10.setText("Herbivore");
         }

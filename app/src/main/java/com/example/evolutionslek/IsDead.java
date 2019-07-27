@@ -1,43 +1,42 @@
 package com.example.evolutionslek;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
-import com.google.zxing.Result;
+public class IsDead extends AppCompatActivity {
+    boolean klar = false;
+    Animals djur = new Animals();
 
-import me.dm7.barcodescanner.zxing.ZXingScannerView;
-
-public class IsDead extends AppCompatActivity implements ZXingScannerView.ResultHandler {
-    private ZXingScannerView zXingScannerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_is_dead);
     }
+
     public void scan(View view) {
-        zXingScannerView = new ZXingScannerView(getApplicationContext());
-        setContentView(zXingScannerView);
-        zXingScannerView.setResultHandler(this);
-        zXingScannerView.startCamera();
+        Intent intent = new Intent(this, Scanning.class);
+        startActivityForResult(intent, 5);
     }
-    @Override
-    public void handleResult(Result result) {
-        String data = result.getText();
-        String[] data2 = data.split(",");
-        Animals djur = new Animals();
-        djur.mass = Integer.parseInt(data2[0]);
-        djur.horns = Integer.parseInt(data2[1]);
-        djur.speed = Integer.parseInt(data2[2]);
-        djur.defense= Integer.parseInt(data2[3]);
-        djur.maxHealth = Integer.parseInt(data2[4]);
-        djur.claws = Integer.parseInt(data2[5]);
-        djur.attack = Integer.parseInt(data2[6]);
-        djur.herbivore = Boolean.parseBoolean(data2[7]);
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra("result", djur);
-        finish();
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 5) {
+                klar = true;
+                Toast.makeText(getApplicationContext(), Boolean.toString(klar), Toast.LENGTH_SHORT).show();
+                djur = data.getParcelableExtra("result");
+                String text = (Double.toString(djur.mass) + "," + Double.toString(djur.horns) + "," + Double.toString(djur.speed) + "," + Double.toString(djur.defense) + "," + Double.toString(djur.maxHealth) + "," + Double.toString(djur.claws) + "," + Double.toString(djur.attack) + "," + Boolean.toString(djur.herbivore) + "," + djur.species);
+                Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("animal", djur);
+                setResult(Activity.RESULT_OK,returnIntent);
+                finish();
+            }
+        }
     }
 }
