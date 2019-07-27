@@ -7,28 +7,22 @@ import java.lang.Math;
 
 public class Animals implements Parcelable {
     Animals(){}
-    int mass;   //1-100
-    int horns;  //0-10
-    int speed;  //0-100
-    int defense;//0-10
-    int maxHealth; //1-100
-    int health; //0-100
-    int claws;  //0-10
-    int attack; //calcuated
-    int food;
+    double mass, horns, speed, defense, maxHealth, health, claws, attack, food;
     boolean herbivore;
+    String species;
 
     protected Animals(Parcel in) {
-        mass = in.readInt();
-        horns = in.readInt();
-        speed = in.readInt();
-        defense = in.readInt();
-        maxHealth = in.readInt();
-        health = in.readInt();
-        claws = in.readInt();
-        attack = in.readInt();
-        food = in.readInt();
+        mass = in.readDouble();
+        horns = in.readDouble();
+        speed = in.readDouble();
+        defense = in.readDouble();
+        maxHealth = in.readDouble();
+        health = in.readDouble();
+        claws = in.readDouble();
+        attack = in.readDouble();
+        food = in.readDouble();
         herbivore = in.readByte() != 0;
+        species = in.readString();
     }
 
     public static final Creator<Animals> CREATOR = new Creator<Animals>() {
@@ -50,16 +44,17 @@ public class Animals implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(mass);
-        dest.writeInt(horns);
-        dest.writeInt(speed);
-        dest.writeInt(defense);
-        dest.writeInt(maxHealth);
-        dest.writeInt(health);
-        dest.writeInt(claws);
-        dest.writeInt(attack);
-        dest.writeInt(food);
+        dest.writeDouble(mass);
+        dest.writeDouble(horns);
+        dest.writeDouble(speed);
+        dest.writeDouble(defense);
+        dest.writeDouble(maxHealth);
+        dest.writeDouble(health);
+        dest.writeDouble(claws);
+        dest.writeDouble(attack);
+        dest.writeDouble(food);
         dest.writeByte((byte) (herbivore ? 1 : 0));
+        dest.writeString(species);
     }
 }
 

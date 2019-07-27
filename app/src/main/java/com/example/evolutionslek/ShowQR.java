@@ -20,7 +20,7 @@ public class ShowQR extends AppCompatActivity {
         setContentView(R.layout.activity_show_qr);
         Intent intent = getIntent();
         Animals djur = intent.getExtras().getParcelable(Ingame.ANIMAL);
-        generateQR(Integer.toString(djur.mass)+","+Integer.toString(djur.horns)+","+Integer.toString(djur.speed)+","+Integer.toString(djur.defense)+","+Integer.toString(djur.health)+","+Integer.toString(djur.claws));
+        generateQR(Double.toString(djur.mass)+","+Double.toString(djur.horns)+","+Double.toString(djur.speed)+","+Double.toString(djur.defense)+","+Double.toString(djur.health)+","+Double.toString(djur.claws));
     }
     private void generateQR(String text){
         ImageView imageView = findViewById(R.id.imageView);

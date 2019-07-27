@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.lang.Math;
 
 public class Ingame extends AppCompatActivity {
 
@@ -102,15 +103,15 @@ public class Ingame extends AppCompatActivity {
         TextView tv8 = findViewById(R.id.textView10);
         TextView tv9 = findViewById(R.id.textView11);
         TextView tv10 =findViewById(R.id.textView12);
-        tv1.setText("Mass: " +Integer.toString(djur.mass));
-        tv2.setText("Horns: " +Integer.toString(djur.horns));
-        tv3.setText("Speed: " +Integer.toString(djur.speed));
-        tv4.setText("Defense: " +Integer.toString(djur.defense));
-        tv5.setText("Max health: " +Integer.toString(djur.maxHealth));
-        tv6.setText("Health: " +Integer.toString(djur.health));
-        tv7.setText("Claws: " +Integer.toString(djur.claws));
-        tv8.setText("Attack: " +Integer.toString(djur.attack));
-        tv9.setText("Food: " +Integer.toString(djur.food));
+        tv1.setText("Mass: " +Long.toString(Math.round(djur.mass)));
+        tv2.setText("Horns: " +Long.toString(Math.round(djur.horns)));
+        tv3.setText("Speed: " +Long.toString(Math.round(djur.speed)));
+        tv4.setText("Defense: " +Long.toString(Math.round(djur.defense)));
+        tv5.setText("Max health: " +Long.toString(Math.round(djur.maxHealth)));
+        tv6.setText("Health: " +Long.toString(Math.round(djur.health)));
+        tv7.setText("Claws: " +Long.toString(Math.round(djur.claws)));
+        tv8.setText("Attack: " +Long.toString(Math.round(djur.attack)));
+        tv9.setText("Food: " +Long.toString(Math.round(djur.food)));
         if(djur.herbivore == true){
             tv10.setText("Herbivore");
         }
