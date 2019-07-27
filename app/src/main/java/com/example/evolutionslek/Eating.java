@@ -52,7 +52,7 @@ public class Eating extends AppCompatActivity implements ZXingScannerView.Result
                 finish();
             }
             else{
-                
+                lastPlant = Integer.parseInt(data2[1]);
             }
         }
         else{
