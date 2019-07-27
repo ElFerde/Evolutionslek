@@ -52,17 +52,10 @@ public class Ingame extends AppCompatActivity {
     }
 
     public void eat(View view) {
-        if(!djur.herbivore) {
             Intent intent = new Intent(this, Eating.class);
             intent.putExtra(ANIMAL, djur);
-            startActivityForResult(intent, 2);
-        }
-        else{
-            Intent intent = new Intent(this, EatPlant.class);
-            intent.putExtra(ANIMAL, djur);
             intent.putExtra("plant", lastPlant);
-            startActivityForResult(intent, 12);
-        }
+            startActivityForResult(intent, 2);
     }
 
     public void die(View view) {
@@ -90,10 +83,6 @@ public class Ingame extends AppCompatActivity {
                     break;
 
                 case 2:
-                    djur.food += Integer.parseInt(data.getStringExtra("result"));
-                    break;
-
-                case 12:
                     djur.food += Integer.parseInt(data.getStringExtra("result"));
                     lastPlant = Integer.parseInt(data.getStringExtra("plant"));
                     break;
