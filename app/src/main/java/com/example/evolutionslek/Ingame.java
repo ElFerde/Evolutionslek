@@ -12,6 +12,7 @@ public class Ingame extends AppCompatActivity {
 
     public static String ANIMAL = "djur";
     Animals djur = new Animals();
+    int lastPlant;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,9 +52,17 @@ public class Ingame extends AppCompatActivity {
     }
 
     public void eat(View view) {
-        Intent intent = new Intent(this, Eating.class);
-        intent.putExtra(ANIMAL, djur);
-        startActivityForResult(intent, 2);
+        if(!djur.herbivore) {
+            Intent intent = new Intent(this, Eating.class);
+            intent.putExtra(ANIMAL, djur);
+            startActivityForResult(intent, 2);
+        }
+        else{
+            Intent intent = new Intent(this, EatPlant.class);
+            intent.putExtra(ANIMAL, djur);
+            intent.putExtra("plant", lastPlant);
+            startActivityForResult(intent, 12);
+        }
     }
 
     public void die(View view) {
@@ -68,26 +77,30 @@ public class Ingame extends AppCompatActivity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == RESULT_OK){
-            if(requestCode == 1){
-                Toast.makeText(getApplicationContext(), data.getStringExtra("result"), Toast.LENGTH_SHORT).show();
-                if(data.getStringExtra("result").equals("bad")){
-                    die();
-                }
-                else if(data.getStringExtra("result").equals("breed")){
-                    djur.food -= EndOfTurn.minBreeding;
-                }
-                else{
-                    djur.food -= EndOfTurn.minFood;
-                }
+            switch(requestCode) {
+                case 1:
+                    Toast.makeText(getApplicationContext(), data.getStringExtra("result"), Toast.LENGTH_SHORT).show();
+                    if (data.getStringExtra("result").equals("bad")) {
+                        die();
+                    } else if (data.getStringExtra("result").equals("breed")) {
+                        djur.food -= EndOfTurn.minBreeding;
+                    } else {
+                        djur.food -= EndOfTurn.minFood;
+                    }
+                    break;
 
-            }
+                case 2:
+                    djur.food += Integer.parseInt(data.getStringExtra("result"));
+                    break;
 
-            if(requestCode == 2){
-                djur.food += Integer.parseInt(data.getStringExtra("result"));
-            }
+                case 12:
+                    djur.food += Integer.parseInt(data.getStringExtra("result"));
+                    lastPlant = Integer.parseInt(data.getStringExtra("plant"));
+                    break;
 
-            if(requestCode == 3){
-                djur = data.getParcelableExtra("animal");
+                case 3:
+                    djur = data.getParcelableExtra("animal");
+                    break;
             }
         }
         updateTraits();

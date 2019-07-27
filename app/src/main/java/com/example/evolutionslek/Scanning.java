@@ -53,7 +53,7 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
             scan();
         }
         else{
-            if(i != parent.species){
+            if(i.equals(parent.species)){
                 finish();
             }
             djur.mass = newStats(parent.mass, a);
