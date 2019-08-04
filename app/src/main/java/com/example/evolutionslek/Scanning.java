@@ -28,13 +28,13 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
         String data = result.getText();
         Toast.makeText(getApplicationContext(), data, Toast.LENGTH_SHORT).show();
         String[] data2 = data.split(",");
-        double a = Integer.parseInt(data2[0]);
-        double b = Integer.parseInt(data2[1]);
-        double c = Integer.parseInt(data2[2]);
-        double d = Integer.parseInt(data2[3]);
-        double e = Integer.parseInt(data2[4]);
-        double f = Integer.parseInt(data2[5]);
-        double g = Integer.parseInt(data2[6]);
+        double a = Double.parseDouble(data2[0]);
+        double b = Double.parseDouble(data2[1]);
+        double c = Double.parseDouble(data2[2]);
+        double d = Double.parseDouble(data2[3]);
+        double e = Double.parseDouble(data2[4]);
+        double f = Double.parseDouble(data2[5]);
+        double g = Double.parseDouble(data2[6]);
         boolean h = Boolean.parseBoolean(data2[7]);
         String i = (data2[8]);
 
