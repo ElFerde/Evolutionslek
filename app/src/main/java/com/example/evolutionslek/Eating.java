@@ -66,12 +66,13 @@ public class Eating extends AppCompatActivity implements ZXingScannerView.Result
             if(a/(1-a)<djur.speed/Double.parseDouble(data2[2])){
                 while(Double.parseDouble(data2[4])>0) {
                     double b = Math.random();
-                    if (b / 2 < djur.health / djur.maxHealth) {
+                    if (b / 2 > djur.health / djur.maxHealth) {
                         success = false;
                         break;
                     } else{
                         data2[4] = Double.toString(Double.parseDouble(data2[4]) - djur.attack/Double.parseDouble(data2[3])*b*5 );
                         djur.health -= Double.parseDouble(data2[3])*b/djur.attack;
+
                     }
                 }
                 if (success) {

@@ -49,11 +49,10 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
             parent.claws = f;
             parent.attack = g;
             parent.species = i;
-
             scan();
         }
         else{
-            if(i.equals(parent.species)){
+            if(!i.equals(parent.species)){
                 finish();
             }
             djur.mass = newStats(parent.mass, a);
@@ -65,6 +64,7 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
             djur.claws = newStats(parent.claws, f);
             djur.attack = newStats(parent.attack, g);
             djur.herbivore = h;
+            djur.species = i;
 
             Intent returnIntent = new Intent();
             returnIntent.putExtra("result", djur);

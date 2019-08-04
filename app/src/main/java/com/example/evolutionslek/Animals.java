@@ -70,6 +70,7 @@ class Husmus extends Animals {
         attack = (int) Math.round(Math.sqrt(mass)*horns);
         food = 0;
         herbivore = true;
+        species = "Husmus";
     }
 }
 class Unicorn extends Animals {
@@ -84,6 +85,7 @@ class Unicorn extends Animals {
         attack = (int) Math.round(Math.sqrt(mass)*horns);
         food = 0;
         herbivore = true;
+        species = "Unicorn";
     }
 }
 class Pedro extends Animals {
@@ -98,6 +100,7 @@ class Pedro extends Animals {
         attack = (int) Math.round(Math.sqrt(mass)*horns);
         food = 0;
         herbivore = false;
+        species = "Pedro";
     }
 }
 class Gruffalo extends Animals {
@@ -112,5 +115,6 @@ class Gruffalo extends Animals {
         attack = (int) Math.round(Math.sqrt(mass)*horns);
         food = 0;
         herbivore = false;
+        species = "Gruffalo";
     }
 }
