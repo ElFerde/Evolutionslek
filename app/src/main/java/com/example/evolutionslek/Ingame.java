@@ -87,7 +87,7 @@ public class Ingame extends AppCompatActivity {
                     break;
 
                 case 2:
-                    djur.food += Integer.parseInt(data.getStringExtra("result"));
+                    djur.food += Double.parseDouble(data.getStringExtra("result"));
                     lastPlant = data.getStringExtra("plant");
                     break;
 

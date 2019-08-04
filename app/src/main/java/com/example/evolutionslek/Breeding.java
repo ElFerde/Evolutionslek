@@ -27,9 +27,7 @@ public class Breeding extends AppCompatActivity {
         animal = intent.getParcelableExtra("djur");
         ImageView imageView = findViewById(R.id.imageView2);
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
-        String text = (Double.toString(animal.mass) + "," + Double.toString(animal.horns) + "," + Double.toString(animal.speed) + "," + Double.toString(animal.defense) + "," + Double.toString(animal.maxHealth) + "," + Double.toString(animal.claws) + "," + Double.toString(animal.attack) + "," + Boolean.toString(animal.herbivore) + "," + animal.species);
-        Toast.makeText(getApplicationContext(), animal.species, Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+        String text = (animal.species + "," + Double.toString(animal.mass) + "," + Double.toString(animal.horns) + "," + Double.toString(animal.speed) + "," + Double.toString(animal.defense) + "," + Double.toString(animal.maxHealth) + "," + Double.toString(animal.claws) + "," + Double.toString(animal.attack) + "," + Boolean.toString(animal.herbivore) + "," + animal.species);
         try {
             BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 200, 200);
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();

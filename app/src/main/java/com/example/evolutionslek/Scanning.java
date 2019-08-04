@@ -36,7 +36,7 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
         double f = Double.parseDouble(data2[5]);
         double g = Double.parseDouble(data2[6]);
         boolean h = Boolean.parseBoolean(data2[7]);
-        String i = (data2[8]);
+        String i = data2[8];
 
 
         if(parent.maxHealth==0){ // parent max health is set to 0 in onCreate()
