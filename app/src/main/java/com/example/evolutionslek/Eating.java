@@ -63,8 +63,8 @@ public class Eating extends AppCompatActivity implements ZXingScannerView.Result
         else{
             double a = Math.random();
             boolean success = true;
-            if(a/(1-a)<djur.speed/Integer.parseInt(data2[2])){
-                while(true) {
+            if(a/(1-a)<djur.speed/Double.parseDouble(data2[2])){
+                while(Double.parseDouble(data2[4])>0) {
                     double b = Math.random();
                     if (b / 2 < djur.health / djur.maxHealth) {
                         success = false;
@@ -80,6 +80,9 @@ public class Eating extends AppCompatActivity implements ZXingScannerView.Result
                     returnIntent.putExtra("health", Double.toString(djur.health));
                     returnIntent.putExtra("health2", data2[4]);
                     setResult(Activity.RESULT_OK, returnIntent);
+                    finish();
+                }
+                else{
                     finish();
                 }
             }
