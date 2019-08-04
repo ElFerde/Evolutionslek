@@ -26,7 +26,7 @@ public class Eating extends AppCompatActivity implements ZXingScannerView.Result
         djur = intent.getParcelableExtra(ANIMAL);
         lastPlant = intent.getStringExtra("plant");
     }
-        public void scan(View view){
+    public void scan(View view){
         zXingScannerView = new ZXingScannerView(getApplicationContext());
         setContentView(zXingScannerView);
         zXingScannerView.setResultHandler(this);
@@ -53,18 +53,38 @@ public class Eating extends AppCompatActivity implements ZXingScannerView.Result
             }
             else{
                 lastPlant = data2[1];
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("result",data2[0]);
+                returnIntent.putExtra("plant",lastPlant);
+                setResult(Activity.RESULT_OK,returnIntent);
+                finish();
             }
         }
         else{
-
+            double a = Math.random();
+            boolean success = true;
+            if(a/(1-a)<djur.speed/Integer.parseInt(data2[2])){
+                while(true) {
+                    double b = Math.random();
+                    if (b / 2 < djur.health / djur.maxHealth) {
+                        success = false;
+                        break;
+                    } else{
+                        data2[4] = Double.toString(Double.parseDouble(data2[4]) - djur.attack/Double.parseDouble(data2[3])*b*5 );
+                        djur.health -= Double.parseDouble(data2[3])*b/djur.attack;
+                    }
+                }
+                if (success) {
+                    Intent returnIntent = new Intent();
+                    returnIntent.putExtra("result", data2[0]);
+                    returnIntent.putExtra("health", Double.toString(djur.health));
+                    returnIntent.putExtra("health2", data2[4]);
+                    setResult(Activity.RESULT_OK, returnIntent);
+                    finish();
+                }
+            }
         }
 
-        //add function of stats
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra("result",data2[0]);
-        returnIntent.putExtra("plant",lastPlant);
-        setResult(Activity.RESULT_OK,returnIntent);
-        finish();
 
     }
     public void finish(View view){
