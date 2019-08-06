@@ -1,7 +1,9 @@
 package com.example.evolutionslek;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -59,13 +61,33 @@ public class Ingame extends AppCompatActivity {
     }
 
     public void die(View view) {
-        Intent intent = new Intent(this, IsDead.class);
-        startActivityForResult(intent, 3);
+        die();
     }
     public void die() {
+        final boolean[] c = {false};
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Die");
+        alertDialogBuilder.setMessage("Are you sure?");
+        alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                die2();
+            }
+        });
+        alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    public void die2() {
+        djur = new Dead();
         Intent intent = new Intent(this, IsDead.class);
         startActivityForResult(intent, 3);
     }
+
 
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

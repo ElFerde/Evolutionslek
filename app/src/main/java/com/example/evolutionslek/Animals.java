@@ -112,9 +112,25 @@ class Gruffalo extends Animals {
         maxHealth = mass;
         health = maxHealth;
         claws = 9;
-        attack = (int) Math.round(Math.sqrt(mass)*horns);
+        attack = (int) Math.round(Math.sqrt(mass) * horns);
         food = 0;
         herbivore = false;
         species = "Gruffalo";
     }
 }
+class Dead extends Animals {
+    public Dead() {
+        mass = 0;
+        horns = 0;
+        speed = 0;
+        defense = 0;
+        maxHealth = mass;
+        health = maxHealth;
+        claws = 0;
+        attack = (int) Math.round(Math.sqrt(mass) * horns);
+        food = 0;
+        herbivore = false;
+        species = "Gruffalo";
+    }
+}
+
