@@ -26,7 +26,7 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
     @Override
     public void handleResult(Result result){
         String data = result.getText();
-        Toast.makeText(getApplicationContext(), data, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), data, Toast.LENGTH_SHORT).show();
         String[] data2 = data.split(",");
         double a = Double.parseDouble(data2[0]);
         double b = Double.parseDouble(data2[1]);

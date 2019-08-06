@@ -83,7 +83,7 @@ public class Ingame extends AppCompatActivity {
         if(resultCode == RESULT_OK){
             switch(requestCode) {
                 case 1:
-                    Toast.makeText(getApplicationContext(), data.getStringExtra("result"), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), data.getStringExtra("result"), Toast.LENGTH_SHORT).show();
                     switch (data.getStringExtra("result")) {
                         case "bad":
                             die();
