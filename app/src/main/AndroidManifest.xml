@@ -11,7 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Scanning"></activity>
+        <activity
+            android:name=".Evolution"
+            android:label="@string/title_activity_evolution"
+            android:parentActivityName=".Ingame"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.evolutionslek.Ingame" />
+        </activity>
+        <activity android:name=".Scanning" />
         <activity android:name=".EndOfTurn" />
         <activity android:name=".IsDead" />
         <activity android:name=".Eating" />

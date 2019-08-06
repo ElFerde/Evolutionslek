@@ -6,4 +6,5 @@
     <string name="create_pedro_button">Pedro</string>
     <string name="create_gruffalo_button">Gruffalo</string>
     <string name="name_input">Namn:</string>
+    <string name="title_activity_evolution">Evolution</string>
 </resources>
