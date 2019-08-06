@@ -60,12 +60,6 @@ public class EndOfTurn extends AppCompatActivity {
         }
     }
 
-    public void breed(View view) {
-
-        Intent intent = new Intent(this, Breeding.class);
-        intent.putExtra("djur", djur);
-        startActivityForResult(intent, 4);
-    }
 
     public void nextTurn(View view) {
         finish();

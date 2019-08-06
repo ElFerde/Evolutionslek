@@ -15,7 +15,6 @@
         <activity android:name=".EndOfTurn" />
         <activity android:name=".IsDead" />
         <activity android:name=".Eating" />
-        <activity android:name=".Breeding" />
         <activity android:name=".ShowQR" />
         <activity android:name=".Ingame" />
         <activity android:name=".StartScreen" />
