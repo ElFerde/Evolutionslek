@@ -10,7 +10,7 @@ import android.widget.ListView;
 public class Evolution extends AppCompatActivity {
     Animals djur;
     ListView listView;
-    String[] egenskaper;
+    String[] egenskaper = new String[8];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class Evolution extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
-        djur = intent.getParcelableExtra(Ingame.ANIMAL);
+        djur = intent.getParcelableExtra("animal");
 
         listView = findViewById(R.id.dynamic);
 

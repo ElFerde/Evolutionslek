@@ -53,13 +53,13 @@ public class StartScreen extends AppCompatActivity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == RESULT_OK){
-            djur = 
+            //djur =
 
         }
     }
     public void sendAnimal(Animals animal){
         Intent intent = new Intent(this, Ingame.class);
-        intent.putExtra(ANIMAL, djur);
+        intent.putExtra(ANIMAL, animal);
         hideButtons();
         startActivityForResult(intent, 21);
     }
