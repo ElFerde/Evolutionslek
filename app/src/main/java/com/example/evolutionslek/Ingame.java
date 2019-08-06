@@ -1,5 +1,6 @@
 package com.example.evolutionslek;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -138,5 +139,8 @@ public class Ingame extends AppCompatActivity {
         else{
             tv10.setText("Carnivore");
         }
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("result", djur);
+        setResult(Activity.RESULT_OK, returnIntent);
     }
 }
