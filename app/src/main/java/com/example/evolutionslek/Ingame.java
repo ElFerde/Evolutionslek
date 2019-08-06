@@ -49,10 +49,10 @@ public class Ingame extends AppCompatActivity {
             startActivityForResult(intent, 2);
     }
 
-    public void die(View view) {
-        die();
-    }
     public void die() {
+        die2();
+    }
+    public void die(View view) {
         final boolean[] c = {false};
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("Die");
