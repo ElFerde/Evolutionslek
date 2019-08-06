@@ -18,8 +18,9 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 public class EndOfTurn extends AppCompatActivity {
     Animals djur;
     Boolean klar;
-    public static int minFood = 10;
-    public static int minBreeding = 15;
+    public static double minFood = 0.5;
+    public static double minBreeding = 1;
+    public static double minEvolution = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,25 +28,20 @@ public class EndOfTurn extends AppCompatActivity {
         setContentView(R.layout.activity_end_of_turn);
         Intent i = getIntent();
         djur = i.getParcelableExtra(Ingame.ANIMAL);
-        if(djur.food >= minBreeding) {
-            ImageView imageView = findViewById(R.id.imageView3);
-            MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
-            String text = (Double.toString(djur.mass) + "," + Double.toString(djur.horns) + "," + Double.toString(djur.speed) + "," + Double.toString(djur.defense) + "," + Double.toString(djur.maxHealth) + "," + Double.toString(djur.claws) + "," + Double.toString(djur.attack) + "," + Boolean.toString(djur.herbivore) + "," + djur.species);
+        if(djur.food >= minEvolution*djur.mass){
+            Intent intent = new Intent(this, Evolution.class);
+            intent.putExtra("animal", djur);
+            startActivityForResult(intent, 9);
+        }
+        else if(djur.food >= minBreeding*djur.mass) {
+            showBreeding();
 
-            try {
-                BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 200, 200);
-                BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-                Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
-                imageView.setImageBitmap(bitmap);
-            } catch (WriterException e) {
-                e.printStackTrace();
-            }
             Intent returnIntent = new Intent();
             returnIntent.putExtra("result", "breed");
             klar = true;
             setResult(Activity.RESULT_OK, returnIntent);
         }
-        else if(djur.food >= minFood) {
+        else if(djur.food >= minFood*djur.mass) {
             Intent returnIntent = new Intent();
             returnIntent.putExtra("result", "good");
             klar = true;
@@ -60,6 +56,35 @@ public class EndOfTurn extends AppCompatActivity {
         }
     }
 
+    public void showBreeding(){
+        ImageView imageView = findViewById(R.id.imageView3);
+        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+        String text = (Double.toString(djur.mass) + "," + Double.toString(djur.horns) + "," + Double.toString(djur.speed) + "," + Double.toString(djur.defense) + "," + Double.toString(djur.maxHealth) + "," + Double.toString(djur.claws) + "," + Double.toString(djur.attack) + "," + Boolean.toString(djur.herbivore) + "," + djur.species);
+
+        try {
+            BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 200, 200);
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+            imageView.setImageBitmap(bitmap);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(resultCode == RESULT_OK) {
+
+
+            showBreeding();
+
+            Intent returnIntent = new Intent();
+            returnIntent.putExtra("result", "evolution");
+            returnIntent.putExtra("animal", djur);
+            klar = true;
+            setResult(Activity.RESULT_OK, returnIntent);
+        }
+    }
 
     public void nextTurn(View view) {
         finish();

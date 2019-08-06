@@ -45,7 +45,7 @@ public class Ingame extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void breed(View view) {
+    public void breed(View view) { //next turn
         Intent intent = new Intent(this, EndOfTurn.class);
         intent.putExtra(ANIMAL, djur);
         startActivityForResult(intent, 1);
@@ -78,6 +78,10 @@ public class Ingame extends AppCompatActivity {
                             die();
                             break;
                         case "breed":
+                            djur.food -= EndOfTurn.minBreeding;
+                            break;
+                        case "evolution":
+                            djur = data.getParcelableExtra("animal");
                             djur.food -= EndOfTurn.minBreeding;
                             break;
                         default:
