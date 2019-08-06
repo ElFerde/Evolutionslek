@@ -21,17 +21,13 @@ public class Eating extends AppCompatActivity implements ZXingScannerView.Result
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eating);
         Intent intent = getIntent();
         djur = intent.getParcelableExtra(ANIMAL);
         lastPlant = intent.getStringExtra("plant");
-    }
-    public void scan(View view){
         zXingScannerView = new ZXingScannerView(getApplicationContext());
         setContentView(zXingScannerView);
         zXingScannerView.setResultHandler(this);
         zXingScannerView.startCamera();
-
     }
 
     @Override
