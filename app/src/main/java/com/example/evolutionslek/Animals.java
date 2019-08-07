@@ -77,7 +77,7 @@ class Unicorn extends Animals {
     public Unicorn() {
         mass = 80;
         horns = 1;
-        speed = 40;
+        speed = 35;
         defense = 4;
         maxHealth = mass;
         health = maxHealth;
@@ -107,7 +107,7 @@ class Gruffalo extends Animals {
     public Gruffalo() {
         mass = 60;
         horns = 2;
-        speed = 15;
+        speed = 25;
         defense = 2;
         maxHealth = mass;
         health = maxHealth;
