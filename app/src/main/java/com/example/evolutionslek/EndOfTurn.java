@@ -27,11 +27,13 @@ public class EndOfTurn extends AppCompatActivity {
         setContentView(R.layout.activity_end_of_turn);
         Intent i = getIntent();
         djur = i.getParcelableExtra(Ingame.ANIMAL);
-        int n = 1;
-        while(djur.food >= Math.pow(minEvolution, n)*djur.mass){
-            djur.winpoints ++;
+        int n = 0;
+        while(djur.food >= Math.pow(minEvolution, n+1)*djur.mass){
             n ++;
         }
+        djur.winpoints += n;
+        djur.food -= Math.pow(minEvolution, n+1);
+        if(n != 0){djur.food += djur.mass;}
         if(djur.food >= minBreeding*djur.mass) {
             showBreeding();
 
