@@ -36,7 +36,7 @@ public class Evolution extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (egenskaper[7] >= 1 && position != 7) {
                     if (egenskaper[position]==0 && egenskaper[7] >= 2){
-                        egenskaper[position] = egenskaper[position] * 1.05 +1;
+                        egenskaper[position] = 1;
                         egenskaper[7] -= 2;
                     }
                     else if (egenskaper[position] != 0) {
@@ -57,6 +57,7 @@ public class Evolution extends AppCompatActivity {
         text[4] = "Max Health: " + Double.toString(egenskaper[4]);
         text[5] = "Claws: " + Double.toString(egenskaper[5]);
         text[6] = "Attack: " + Double.toString(egenskaper[6]);
+        text[7] = "Evolution points: " + Double.toString(egenskaper[7]);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 this,

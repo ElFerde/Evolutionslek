@@ -30,7 +30,7 @@ public class EndOfTurn extends AppCompatActivity {
         if(djur.food >= minEvolution*djur.mass){
             //+victorypoint
         }
-        else if(djur.food >= minBreeding*djur.mass) {
+        if(djur.food >= minBreeding*djur.mass) {
             showBreeding();
 
             Intent returnIntent = new Intent();
