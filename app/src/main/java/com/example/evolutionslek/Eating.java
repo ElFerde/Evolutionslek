@@ -59,10 +59,7 @@ public class Eating extends AppCompatActivity implements ZXingScannerView.Result
             finish();
         }
         else{
-            //boolean d = true;
-            //if(data2.length < 8){
-              //  d = false;
-            //}
+            // Det fanns kod här förrut, men den togs bort
             double a = Math.random()*0.8;
             boolean success = true;
             if(a/(1-a)<djur.speed/Double.parseDouble(data2[2])-0.2){
