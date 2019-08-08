@@ -52,7 +52,7 @@ public class EndOfTurn extends AppCompatActivity {
             returnIntent.putExtra("result", "bad");
             klar = true;
             setResult(Activity.RESULT_OK, returnIntent);
-            Toast.makeText(getApplicationContext(), "Hej", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "Hej", Toast.LENGTH_SHORT).show();
         }
     }
 
