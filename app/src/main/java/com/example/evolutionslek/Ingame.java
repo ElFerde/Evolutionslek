@@ -90,6 +90,7 @@ public class Ingame extends AppCompatActivity {
                             break;
                         case "breed":
                             djur.food -= EndOfTurn.minBreeding;
+                            djur = data.getParcelableExtra("animal");
                             break;
                         case "evolution":
                             djur = data.getParcelableExtra("animal");
@@ -125,6 +126,7 @@ public class Ingame extends AppCompatActivity {
         TextView tv8 = findViewById(R.id.textView10);
         TextView tv9 = findViewById(R.id.textView11);
         TextView tv10 =findViewById(R.id.textView12);
+        TextView tv = findViewById(R.id.textView);
         tv1.setText("Mass: " +Long.toString(Math.round(djur.mass)));
         tv2.setText("Horns: " +Long.toString(Math.round(djur.horns)));
         tv3.setText("Speed: " +Long.toString(Math.round(djur.speed)));
@@ -134,6 +136,7 @@ public class Ingame extends AppCompatActivity {
         tv7.setText("Claws: " +Long.toString(Math.round(djur.claws)));
         tv8.setText("Attack: " +Long.toString(Math.round(djur.attack)));
         tv9.setText("Food: " +Long.toString(Math.round(djur.food)));
+        tv.setText("Victory points:" + Integer.toString(djur.winpoints));
         if(djur.herbivore == true){
             tv10.setText("Herbivore");
         }

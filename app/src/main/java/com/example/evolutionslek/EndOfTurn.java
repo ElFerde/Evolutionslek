@@ -27,14 +27,17 @@ public class EndOfTurn extends AppCompatActivity {
         setContentView(R.layout.activity_end_of_turn);
         Intent i = getIntent();
         djur = i.getParcelableExtra(Ingame.ANIMAL);
-        if(djur.food >= minEvolution*djur.mass){
-            //+victorypoint
+        int n = 1;
+        while(djur.food >= Math.pow(minEvolution, n)*djur.mass){
+            djur.winpoints ++;
+            n ++;
         }
         if(djur.food >= minBreeding*djur.mass) {
             showBreeding();
 
             Intent returnIntent = new Intent();
             returnIntent.putExtra("result", "breed");
+            returnIntent.putExtra("animal", djur);
             klar = true;
             setResult(Activity.RESULT_OK, returnIntent);
         }
@@ -54,7 +57,7 @@ public class EndOfTurn extends AppCompatActivity {
     public void showBreeding(){
         ImageView imageView = findViewById(R.id.imageView3);
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
-        String text = (Double.toString(djur.mass) + "," + Double.toString(djur.horns) + "," + Double.toString(djur.speed) + "," + Double.toString(djur.defense) + "," + Double.toString(djur.maxHealth) + "," + Double.toString(djur.claws) + "," + Double.toString(djur.attack) + "," + Boolean.toString(djur.herbivore) + "," + djur.species);
+        String text = (Double.toString(djur.mass) + "," + Double.toString(djur.horns) + "," + Double.toString(djur.speed) + "," + Double.toString(djur.defense) + "," + Double.toString(djur.maxHealth) + "," + Double.toString(djur.claws) + "," + Double.toString(djur.attack) + "," + Boolean.toString(djur.herbivore) + "," + djur.species + "," +Integer.toString(djur.winpoints));
 
         try {
             BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 200, 200);

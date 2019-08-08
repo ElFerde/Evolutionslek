@@ -37,6 +37,7 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
         double g = Double.parseDouble(data2[6]);
         boolean h = Boolean.parseBoolean(data2[7]);
         String i = data2[8];
+        int j = Integer.parseInt(data2[8]);
 
 
         if(parent.maxHealth==0){ // parent max health is set to 0 in onCreate()
@@ -49,6 +50,7 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
             parent.claws = f;
             parent.attack = g;
             parent.species = i;
+            parent.winpoints = j;
             scan();
         }
         else{
@@ -65,6 +67,7 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
             djur.attack = newStats(parent.attack, g);
             djur.herbivore = h;
             djur.species = i;
+            djur.winpoints = Math.min(parent.winpoints, j);
 
             Intent returnIntent = new Intent();
             returnIntent.putExtra("result", djur);

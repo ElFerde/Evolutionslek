@@ -8,6 +8,7 @@ import java.lang.Math;
 public class Animals implements Parcelable {
     Animals(){}
     double mass, horns, speed, defense, maxHealth, health, claws, attack, food;
+    int winpoints = 0;
     boolean herbivore;
     String species;
 
@@ -23,6 +24,7 @@ public class Animals implements Parcelable {
         food = in.readDouble();
         herbivore = in.readByte() != 0;
         species = in.readString();
+        winpoints = in.readInt();
     }
 
     public static final Creator<Animals> CREATOR = new Creator<Animals>() {
@@ -55,6 +57,7 @@ public class Animals implements Parcelable {
         dest.writeDouble(food);
         dest.writeByte((byte) (herbivore ? 1 : 0));
         dest.writeString(species);
+        dest.writeInt(winpoints);
     }
 }
 
