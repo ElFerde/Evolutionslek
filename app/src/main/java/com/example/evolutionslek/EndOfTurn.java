@@ -46,6 +46,28 @@ public class EndOfTurn extends AppCompatActivity {
             returnIntent.putExtra("result", "good");
             klar = true;
             setResult(Activity.RESULT_OK, returnIntent);
+            int a = 0;
+            while(a<2) {
+                int r = (int) Math.random() * 7 + 1;
+                int s = ((int) Math.random() * 2) * 2 - 1;
+                switch(r){
+                    case 1:
+                        djur.mass += s;
+                    case 2:
+                        djur.speed += s;
+                    case 3:
+                        djur.horns += s;
+                    case 4:
+                        djur.maxHealth += s;
+                    case 5:
+                        djur.claws += s;
+                    case 6:
+                        djur.attack += s;
+                    case 7:
+                        djur.defense += s;
+                }
+                a++;
+            }
         }
         else {
             Intent returnIntent = new Intent();

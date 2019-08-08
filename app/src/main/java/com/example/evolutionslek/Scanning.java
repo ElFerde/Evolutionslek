@@ -89,6 +89,6 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
         zXingScannerView = new ZXingScannerView(getApplicationContext());
         setContentView(zXingScannerView);
         zXingScannerView.setResultHandler(this);
-        zXingScannerView.startCamera();
+        zXingScannerView.startCamera();                              
     }
 }
