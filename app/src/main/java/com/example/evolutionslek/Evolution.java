@@ -34,9 +34,15 @@ public class Evolution extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (egenskaper[7] >= 100 && position != 7) {
-                    egenskaper[position] = egenskaper[position] * 1.05 + 1;
-                    egenskaper[7] -= 100;
+                if (egenskaper[7] >= 1 && position != 7) {
+                    if (egenskaper[position]==0 && egenskaper[7] >= 2){
+                        egenskaper[position] = 1;
+                        egenskaper[7] -= 2;
+                    }
+                    else if (egenskaper[position] != 0) {
+                        egenskaper[position] = egenskaper[position] * 1.05 + 1;
+                        egenskaper[7] -= 1;
+                    }
                 }
                 updateList();
             }
@@ -51,7 +57,7 @@ public class Evolution extends AppCompatActivity {
         text[4] = "Max Health: " + Double.toString(egenskaper[4]);
         text[5] = "Claws: " + Double.toString(egenskaper[5]);
         text[6] = "Attack: " + Double.toString(egenskaper[6]);
-        text[7] = "Food: " + Double.toString(egenskaper[7]);
+        text[7] = "Evolution points: " + Double.toString(egenskaper[7]);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 this,
@@ -68,7 +74,6 @@ public class Evolution extends AppCompatActivity {
         djur.maxHealth = egenskaper[4];
         djur.claws = egenskaper[5];
         djur.attack = egenskaper[6];
-        djur.food = egenskaper[7];
 
         Toast.makeText(getApplicationContext(), Double.toString(egenskaper[1]), Toast.LENGTH_SHORT).show();
 
@@ -86,7 +91,7 @@ public class Evolution extends AppCompatActivity {
         egenskaper[4] = djur.maxHealth;
         egenskaper[5] = djur.claws;
         egenskaper[6] = djur.attack;
-        egenskaper[7] = djur.food;
+        egenskaper[7] = 2;
         updateList();
     }
 
