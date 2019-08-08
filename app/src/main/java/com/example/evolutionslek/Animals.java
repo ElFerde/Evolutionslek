@@ -3,8 +3,6 @@ package com.example.evolutionslek;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.lang.Math;
-
 public class Animals implements Parcelable {
     Animals(){}
     double mass, horns, speed, defense, maxHealth, health, claws, attack, food;
@@ -68,7 +66,7 @@ class Husmus extends Animals {
         health = 15;
         claws = 1;
         attack = 1;
-        food = 0;
+        food = mass/2;
         herbivore = true;
         species = "Husmus";
     }
@@ -83,7 +81,7 @@ class Unicorn extends Animals {
         health = maxHealth;
         claws = 0;
         attack = 4;
-        food = 0;
+        food = mass/2;
         herbivore = true;
         species = "Unicorn";
     }
@@ -98,7 +96,7 @@ class Pedro extends Animals {
         health = maxHealth;
         claws = 7;
         attack = 15;
-        food = 0;
+        food = mass/2;
         herbivore = false;
         species = "Pedro";
     }
@@ -113,7 +111,7 @@ class Gruffalo extends Animals {
         health = maxHealth;
         claws = 9;
         attack = 20;
-        food = 0;
+        food = mass/2;
         herbivore = false;
         species = "Gruffalo";
     }
@@ -128,7 +126,7 @@ class Dead extends Animals {
         health = maxHealth;
         claws = 0;
         attack = 0;
-        food = 0;
+        food = mass/2;
         herbivore = false;
         species = "None";
     }
