@@ -22,6 +22,12 @@ public class EndOfTurn extends AppCompatActivity {
     public static double minBreeding = 1;
     public static double minEvolution = 2;
 
+    public double randomEvolution(double a){
+        int s = ((int) Math.random() * 2) * 2 - 1;
+        return(a + s + 0.01*s*a);
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,19 +58,19 @@ public class EndOfTurn extends AppCompatActivity {
                 int s = ((int) Math.random() * 2) * 2 - 1;
                 switch(r){
                     case 1:
-                        djur.mass += s;
+                        djur.mass = randomEvolution(djur.mass);
                     case 2:
-                        djur.speed += s;
+                        djur.speed = randomEvolution(djur.speed);
                     case 3:
-                        djur.horns += s;
+                        djur.horns = randomEvolution(djur.horns);
                     case 4:
-                        djur.maxHealth += s;
+                        djur.maxHealth = randomEvolution(djur.health);
                     case 5:
-                        djur.claws += s;
+                        djur.claws = randomEvolution(djur.claws);
                     case 6:
-                        djur.attack += s;
+                        djur.attack = randomEvolution(djur.attack);
                     case 7:
-                        djur.defense += s;
+                        djur.defense = randomEvolution(djur.defense);
                 }
                 a++;
             }
@@ -98,9 +104,7 @@ public class EndOfTurn extends AppCompatActivity {
         if(resultCode == RESULT_OK) {
             if(requestCode == 9) {
                 djur = data.getParcelableExtra("animal");
-
                 showBreeding();
-
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("result", "evolution");
                 returnIntent.putExtra("animal", djur);
