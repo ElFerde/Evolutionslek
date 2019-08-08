@@ -38,29 +38,34 @@ public class Evolution extends AppCompatActivity {
         egenskaper[6] = djur.attack;
         egenskaper[7] = djur.food;
 
-        text[0] = "Mass: " + Double.toString(djur.mass);
-        text[1] = "Horns: " + Double.toString(djur.horns);
-        text[2] = "Speed: " + Double.toString(djur.speed);
-        text[3] = "Defense: " + Double.toString(djur.defense);
-        text[4] = "Max Health: " + Double.toString(djur.maxHealth);
-        text[5] = "Claws: " + Double.toString(djur.claws);
-        text[6] = "Attack: " + Double.toString(djur.attack);
-        text[7] = "Food: " + Double.toString(djur.food);
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                text);
-        listView.setAdapter(arrayAdapter);
+        updateList();
 
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 egenskaper[position] += 1;
-                Toast.makeText(getApplicationContext(), Double.toString(egenskaper[position]), Toast.LENGTH_SHORT).show();
+                egenskaper[7] -=100;
+                updateList();
             }
         });
+    }
+
+    public void updateList(){
+        text[0] = "Mass: " + Double.toString(egenskaper[0]);
+        text[1] = "Horns: " + Double.toString(egenskaper[1]);
+        text[2] = "Speed: " + Double.toString(egenskaper[2]);
+        text[3] = "Defense: " + Double.toString(egenskaper[3]);
+        text[4] = "Max Health: " + Double.toString(egenskaper[4]);
+        text[5] = "Claws: " + Double.toString(egenskaper[5]);
+        text[6] = "Attack: " + Double.toString(egenskaper[6]);
+        text[7] = "Food: " + Double.toString(egenskaper[7]);
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                text);
+        listView.setAdapter(arrayAdapter);
     }
 
     public void finished(View view){
