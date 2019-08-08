@@ -64,10 +64,10 @@ class Husmus extends Animals {
         horns = 0;
         speed = 80;
         defense = 1;
-        maxHealth = mass;
-        health = maxHealth;
+        maxHealth = 60;
+        health = 15;
         claws = 1;
-        attack = (int) Math.round(Math.sqrt(mass)*horns);
+        attack = 1;
         food = 0;
         herbivore = true;
         species = "Husmus";
@@ -77,12 +77,12 @@ class Unicorn extends Animals {
     public Unicorn() {
         mass = 80;
         horns = 1;
-        speed = 40;
-        defense = 4;
-        maxHealth = mass;
+        speed = 35;
+        defense = 15;
+        maxHealth = 80;
         health = maxHealth;
         claws = 0;
-        attack = (int) Math.round(Math.sqrt(mass)*horns);
+        attack = 4;
         food = 0;
         herbivore = true;
         species = "Unicorn";
@@ -94,10 +94,10 @@ class Pedro extends Animals {
         horns = 0;
         speed = 60;
         defense = 2;
-        maxHealth = mass;
+        maxHealth = 30;
         health = maxHealth;
         claws = 7;
-        attack = (int) Math.round(Math.sqrt(mass)*horns);
+        attack = 15;
         food = 0;
         herbivore = false;
         species = "Pedro";
@@ -107,12 +107,12 @@ class Gruffalo extends Animals {
     public Gruffalo() {
         mass = 60;
         horns = 2;
-        speed = 15;
+        speed = 25;
         defense = 2;
-        maxHealth = mass;
+        maxHealth = 60;
         health = maxHealth;
         claws = 9;
-        attack = (int) Math.round(Math.sqrt(mass) * horns);
+        attack = 20;
         food = 0;
         herbivore = false;
         species = "Gruffalo";
@@ -124,13 +124,13 @@ class Dead extends Animals {
         horns = 0;
         speed = 0;
         defense = 0;
-        maxHealth = mass;
+        maxHealth = 0;
         health = maxHealth;
         claws = 0;
-        attack = (int) Math.round(Math.sqrt(mass) * horns);
+        attack = 0;
         food = 0;
         herbivore = false;
-        species = "Gruffalo";
+        species = "None";
     }
 }
 

@@ -27,10 +27,10 @@ public class IsDead extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             if (requestCode == 5) {
                 klar = true;
-                Toast.makeText(getApplicationContext(), Boolean.toString(klar), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), Boolean.toString(klar), Toast.LENGTH_SHORT).show();
                 djur = data.getParcelableExtra("result");
                 String text = (Double.toString(djur.mass) + "," + Double.toString(djur.horns) + "," + Double.toString(djur.speed) + "," + Double.toString(djur.defense) + "," + Double.toString(djur.maxHealth) + "," + Double.toString(djur.claws) + "," + Double.toString(djur.attack) + "," + Boolean.toString(djur.herbivore) + "," + djur.species);
-                Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
 
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("animal", djur);

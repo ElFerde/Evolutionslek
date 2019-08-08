@@ -1,5 +1,6 @@
 package com.example.evolutionslek;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,10 +49,10 @@ public class Ingame extends AppCompatActivity {
             startActivityForResult(intent, 2);
     }
 
-    public void die(View view) {
-        die();
-    }
     public void die() {
+        die2();
+    }
+    public void die(View view) {
         final boolean[] c = {false};
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("Die");
@@ -82,7 +83,7 @@ public class Ingame extends AppCompatActivity {
         if(resultCode == RESULT_OK){
             switch(requestCode) {
                 case 1:
-                    Toast.makeText(getApplicationContext(), data.getStringExtra("result"), Toast.LENGTH_SHORT).show();
+                    //§t.makeText(getApplicationContext(), data.getStringExtra("result"), Toast.LENGTH_SHORT).show();
                     switch (data.getStringExtra("result")) {
                         case "bad":
                             die();
@@ -138,5 +139,8 @@ public class Ingame extends AppCompatActivity {
         else{
             tv10.setText("Carnivore");
         }
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("result", djur);
+        setResult(Activity.RESULT_OK, returnIntent);
     }
 }

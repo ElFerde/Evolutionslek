@@ -46,14 +46,13 @@ public class StartScreen extends AppCompatActivity {
     }
 
     public void continu(View view) {
-        Intent intent = new Intent(this, Ingame.class);
-        startActivity(intent);
+        sendAnimal(djur);
 
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == RESULT_OK){
-            //djur =
+            djur = data.getParcelableExtra("result");
 
         }
     }

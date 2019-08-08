@@ -59,13 +59,13 @@ public class Eating extends AppCompatActivity implements ZXingScannerView.Result
             finish();
         }
         else{
-            boolean d = true;
-            if(data2.length < 8){
-                d = false;
-            }
-            double a = Math.random();
+            //boolean d = true;
+            //if(data2.length < 8){
+              //  d = false;
+            //}
+            double a = Math.random()*0.8;
             boolean success = true;
-            if(d/*(a/(1-a)<djur.speed/Double.parseDouble(data2[2])*/){
+            if(a/(1-a)<djur.speed/Double.parseDouble(data2[2])-0.2){
                 while(Double.parseDouble(data2[4])>0) {
                     double b = Math.random();
                     if (b / 2 > djur.health / djur.maxHealth) {
