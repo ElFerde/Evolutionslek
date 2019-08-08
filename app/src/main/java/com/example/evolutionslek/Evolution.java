@@ -44,8 +44,10 @@ public class Evolution extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                egenskaper[position] += 1;
-                egenskaper[7] -=100;
+                egenskaper[position] = egenskaper[position]*1.05+1;
+                if(egenskaper[7] >= 100) {
+                    egenskaper[7] -= 100;
+                }
                 updateList();
             }
         });

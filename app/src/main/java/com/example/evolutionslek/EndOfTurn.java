@@ -23,7 +23,7 @@ public class EndOfTurn extends AppCompatActivity {
 
     public double randomEvolution(double a){
         int s = ((int) (Math.random()*2) * 2)  - 1;
-        return(a + s + 0.01*s*a);
+        return(a + 2*s + 0.1*s*a);
 
     }
 
@@ -52,7 +52,7 @@ public class EndOfTurn extends AppCompatActivity {
             klar = true;
             setResult(Activity.RESULT_OK, returnIntent);
             int a = 0;
-            while(a<2) {
+            while(a<3 ) {
                 int r = (int) (Math.random() * 7) + 1;
                 switch(r){
                     case 1:
