@@ -21,12 +21,6 @@ public class EndOfTurn extends AppCompatActivity {
     public static double minBreeding = 1;
     public static double minEvolution = 2;
 
-    public double randomEvolution(double a){
-        int s = ((int) (Math.random()*2) * 2)  - 1;
-        return(a + 2*s + 0.1*s*a);
-
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +28,7 @@ public class EndOfTurn extends AppCompatActivity {
         Intent i = getIntent();
         djur = i.getParcelableExtra(Ingame.ANIMAL);
         if(djur.food >= minEvolution*djur.mass){
-            Intent intent = new Intent(this, Evolution.class);
-            intent.putExtra("animal", djur);
-            startActivityForResult(intent, 9);
+            //+victorypoint
         }
         else if(djur.food >= minBreeding*djur.mass) {
             showBreeding();
@@ -47,46 +39,15 @@ public class EndOfTurn extends AppCompatActivity {
             setResult(Activity.RESULT_OK, returnIntent);
         }
         else if(djur.food >= minFood*djur.mass) {
-            Intent returnIntent = new Intent();
-            returnIntent.putExtra("result", "good");
-            klar = true;
-            setResult(Activity.RESULT_OK, returnIntent);
-            int a = 0;
-            while(a<3 ) {
-                int r = (int) (Math.random() * 7) + 1;
-                switch(r){
-                    case 1:
-                        djur.mass = Math.abs(randomEvolution(djur.mass));
-                        break;
-                    case 2:
-                        djur.speed = Math.abs(randomEvolution(djur.speed));
-                        break;
-                    case 3:
-                        djur.horns = Math.abs(randomEvolution(djur.horns));
-                        break;
-                    case 4:
-                        djur.maxHealth = Math.abs(randomEvolution(djur.maxHealth));
-                        break;
-                    case 5:
-                        djur.claws = Math.abs(randomEvolution(djur.claws));
-                        break;
-                    case 6:
-                        djur.attack = Math.abs(randomEvolution(djur.attack));
-                        break;
-                    case 7:
-                        djur.defense = Math.abs(randomEvolution(djur.defense));
-                        break;
-                }
-                a++;
-            }
-            returnIntent.putExtra("animal", djur);
+            Intent intent = new Intent(this, Evolution.class);
+            intent.putExtra("animal", djur);
+            startActivityForResult(intent, 9);
         }
         else {
             Intent returnIntent = new Intent();
             returnIntent.putExtra("result", "bad");
             klar = true;
             setResult(Activity.RESULT_OK, returnIntent);
-            //Toast.makeText(getApplicationContext(), "Hej", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -112,7 +73,7 @@ public class EndOfTurn extends AppCompatActivity {
                 djur = data.getParcelableExtra("animal");
                 showBreeding();
                 Intent returnIntent = new Intent();
-                returnIntent.putExtra("result", "evolution");
+                returnIntent.putExtra("result", "good");
                 returnIntent.putExtra("animal", djur);
                 klar = true;
                 setResult(Activity.RESULT_OK, returnIntent);
