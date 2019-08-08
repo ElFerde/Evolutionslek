@@ -96,6 +96,7 @@ public class Ingame extends AppCompatActivity {
                             djur.food -= EndOfTurn.minBreeding;
                             break;
                         default:
+                            djur = data.getParcelableExtra("animal");
                             djur.food -= EndOfTurn.minFood;
                             break;
                     }

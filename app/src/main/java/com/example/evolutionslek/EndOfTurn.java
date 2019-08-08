@@ -23,7 +23,7 @@ public class EndOfTurn extends AppCompatActivity {
     public static double minEvolution = 2;
 
     public double randomEvolution(double a){
-        int s = ((int) Math.random() * 2) * 2 - 1;
+        int s = ((int) (Math.random()*2) * 2)  - 1;
         return(a + s + 0.01*s*a);
 
     }
@@ -54,26 +54,33 @@ public class EndOfTurn extends AppCompatActivity {
             setResult(Activity.RESULT_OK, returnIntent);
             int a = 0;
             while(a<2) {
-                int r = (int) Math.random() * 7 + 1;
-                int s = ((int) Math.random() * 2) * 2 - 1;
+                int r = (int) (Math.random() * 7) + 1;
                 switch(r){
                     case 1:
-                        djur.mass = randomEvolution(djur.mass);
+                        djur.mass = Math.abs(randomEvolution(djur.mass));
+                        break;
                     case 2:
-                        djur.speed = randomEvolution(djur.speed);
+                        djur.speed = Math.abs(randomEvolution(djur.speed));
+                        break;
                     case 3:
-                        djur.horns = randomEvolution(djur.horns);
+                        djur.horns = Math.abs(randomEvolution(djur.horns));
+                        break;
                     case 4:
-                        djur.maxHealth = randomEvolution(djur.health);
+                        djur.maxHealth = Math.abs(randomEvolution(djur.maxHealth));
+                        break;
                     case 5:
-                        djur.claws = randomEvolution(djur.claws);
+                        djur.claws = Math.abs(randomEvolution(djur.claws));
+                        break;
                     case 6:
-                        djur.attack = randomEvolution(djur.attack);
+                        djur.attack = Math.abs(randomEvolution(djur.attack));
+                        break;
                     case 7:
-                        djur.defense = randomEvolution(djur.defense);
+                        djur.defense = Math.abs(randomEvolution(djur.defense));
+                        break;
                 }
                 a++;
             }
+            returnIntent.putExtra("animal", djur);
         }
         else {
             Intent returnIntent = new Intent();
