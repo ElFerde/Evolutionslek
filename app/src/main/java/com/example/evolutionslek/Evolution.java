@@ -75,7 +75,7 @@ public class Evolution extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(), Double.toString(egenskaper[1]), Toast.LENGTH_SHORT).show();
 
-        Intent returnIntent = new Intent(this, Evolution.class);
+        Intent returnIntent = new Intent();
         returnIntent.putExtra("animal", djur);
         setResult(RESULT_OK, returnIntent);
         finish();

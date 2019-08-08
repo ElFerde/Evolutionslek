@@ -96,16 +96,17 @@ public class EndOfTurn extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if(resultCode == RESULT_OK) {
-            Intent i = getIntent();
-            djur = i.getParcelableExtra("animal");
+            if(requestCode == 9) {
+                djur = data.getParcelableExtra("animal");
 
-            showBreeding();
+                showBreeding();
 
-            Intent returnIntent = new Intent();
-            returnIntent.putExtra("result", "evolution");
-            returnIntent.putExtra("animal", djur);
-            klar = true;
-            setResult(Activity.RESULT_OK, returnIntent);
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("result", "evolution");
+                returnIntent.putExtra("animal", djur);
+                klar = true;
+                setResult(Activity.RESULT_OK, returnIntent);
+            }
         }
     }
 
