@@ -28,24 +28,14 @@ public class Evolution extends AppCompatActivity {
         djur = intent.getParcelableExtra("animal");
 
         listView = findViewById(R.id.dynamic);
-
-        egenskaper[0] = djur.mass;
-        egenskaper[1] = djur.horns;
-        egenskaper[2] = djur.speed;
-        egenskaper[3] = djur.defense;
-        egenskaper[4] = djur.maxHealth;
-        egenskaper[5] = djur.claws;
-        egenskaper[6] = djur.attack;
-        egenskaper[7] = djur.food;
-
-        updateList();
+        reset();
 
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(egenskaper[7] >= 100 && position != 7) {
-                    egenskaper[position] = egenskaper[position]*1.05+1;
+                if (egenskaper[7] >= 100 && position != 7) {
+                    egenskaper[position] = egenskaper[position] * 1.05 + 1;
                     egenskaper[7] -= 100;
                 }
                 updateList();
@@ -53,7 +43,7 @@ public class Evolution extends AppCompatActivity {
         });
     }
 
-    public void updateList(){
+    public void updateList() {
         text[0] = "Mass: " + Double.toString(egenskaper[0]);
         text[1] = "Horns: " + Double.toString(egenskaper[1]);
         text[2] = "Speed: " + Double.toString(egenskaper[2]);
@@ -70,7 +60,7 @@ public class Evolution extends AppCompatActivity {
         listView.setAdapter(arrayAdapter);
     }
 
-    public void finished(View view){
+    public void finished(View view) {
         djur.mass = egenskaper[0];
         djur.horns = egenskaper[1];
         djur.speed = egenskaper[2];
@@ -88,4 +78,20 @@ public class Evolution extends AppCompatActivity {
         finish();
     }
 
+    public void reset() {
+        egenskaper[0] = djur.mass;
+        egenskaper[1] = djur.horns;
+        egenskaper[2] = djur.speed;
+        egenskaper[3] = djur.defense;
+        egenskaper[4] = djur.maxHealth;
+        egenskaper[5] = djur.claws;
+        egenskaper[6] = djur.attack;
+        egenskaper[7] = djur.food;
+        updateList();
+    }
+
+
+    public void reset(View view){
+        reset();
+    }
 }
