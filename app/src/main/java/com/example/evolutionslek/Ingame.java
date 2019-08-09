@@ -102,7 +102,7 @@ public class Ingame extends AppCompatActivity {
                     break;
 
                 case 2:
-                    djur.food += Double.parseDouble(data.getStringExtra("result"));
+                    djur.food += Double.parseDouble(data.getStringExtra("result"))*Math.pow(Math.cbrt(djur.mass), 2)/10;
                     lastPlant = data.getStringExtra("plant");
                     break;
 
