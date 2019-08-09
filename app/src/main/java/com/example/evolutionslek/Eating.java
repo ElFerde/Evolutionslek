@@ -63,21 +63,22 @@ public class Eating extends AppCompatActivity implements ZXingScannerView.Result
             //if(data2.length < 8){
               //  d = false;
             //}
-            double a = Math.random()*0.8;
-            boolean success = true;
-            if(a/(1-a)<djur.speed/Double.parseDouble(data2[2])-0.2){
-                while(Double.parseDouble(data2[4])>0) {
-                    double b = Math.random();
-                    if (b / 2 > djur.health / djur.maxHealth) {
-                        success = false;
-                        break;
-                    }
-                    else{
-                        data2[4] = Double.toString(Double.parseDouble(data2[4]) - djur.attack/Double.parseDouble(data2[3])*b*5 );
-                        djur.health -= Double.parseDouble(data2[3])*b/djur.attack;
-                        Toast.makeText(getApplicationContext(), "Hejhej", Toast.LENGTH_SHORT).show();
+            double r = Math.random();
+            if(data2.length < 8 && 1.5*r/(1-r)-0.5 > djur.speed/Integer.parseInt(data2[2])){
 
-                    }
+                boolean success ;
+                if(Integer.parseInt(data2[1]) == 0 || Integer.parseInt(data2[3])  == 0){
+                    success = true;
+                }
+                double d = djur.mass/Integer.parseInt(data2[0]);
+                double a = djur.claws/Integer.parseInt(data2[3])*d;
+                double b = djur.attack/Integer.parseInt(data2[2])*d;
+                double c = Math.random()*(a+b);
+                if (c > djur.health/Integer.parseInt(data2[4])){
+                    success = true;
+                }
+                else{
+                    success = false;
                 }
                 if (success) {
                     Intent returnIntent = new Intent();
