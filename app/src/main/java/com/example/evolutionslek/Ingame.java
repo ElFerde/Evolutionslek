@@ -8,8 +8,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-import java.lang.Math;
 
 public class Ingame extends AppCompatActivity {
 
@@ -33,6 +31,7 @@ public class Ingame extends AppCompatActivity {
     public void showQR(View view) {
         Intent intent = new Intent(this, ShowQR.class);
         intent.putExtra(ANIMAL, djur);
+        intent.putExtra("code", "eaten");
         startActivity(intent);
     }
 
