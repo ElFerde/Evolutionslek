@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -29,11 +30,14 @@ public class EndOfTurn extends AppCompatActivity {
         djur = i.getParcelableExtra(Ingame.ANIMAL);
         int n = 0;
         while(djur.food >= Math.pow(minEvolution, n+1)*djur.mass){
+            Toast.makeText(this, "Hej", Toast.LENGTH_SHORT);
             n ++;
         }
-        djur.winpoints += n;
-        djur.food -= Math.pow(minEvolution, n+1);
-        if(n != 0){djur.food += djur.mass;}
+        if(n != 0){
+            djur.food += djur.mass;
+            djur.winpoints += n;
+            djur.food -= Math.pow(minEvolution, n+1);
+        }
         if(djur.food >= minBreeding*djur.mass) {
             showBreeding();
 
@@ -42,11 +46,14 @@ public class EndOfTurn extends AppCompatActivity {
             returnIntent.putExtra("animal", djur);
             klar = true;
             setResult(Activity.RESULT_OK, returnIntent);
+            djur.food -= djur.mass*minBreeding;
         }
         else if(djur.food >= minFood*djur.mass) {
             Intent intent = new Intent(this, Evolution.class);
+            djur.food -= djur.mass*minFood;
             intent.putExtra("animal", djur);
             startActivityForResult(intent, 9);
+
         }
         else {
             Intent returnIntent = new Intent();

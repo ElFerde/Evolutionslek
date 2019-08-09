@@ -89,16 +89,14 @@ public class Ingame extends AppCompatActivity {
                             die();
                             break;
                         case "breed":
-                            djur.food -= EndOfTurn.minBreeding;
                             djur = data.getParcelableExtra("animal");
                             break;
-                        case "evolution":
+                        /*case "evolution":
                             djur = data.getParcelableExtra("animal");
-                            djur.food -= EndOfTurn.minBreeding;
-                            break;
+                            djur.food -= EndOfTurn.minBreeding*djur.mass;
+                            break;*/
                         default:
                             djur = data.getParcelableExtra("animal");
-                            djur.food -= EndOfTurn.minFood;
                             break;
                     }
                     break;
