@@ -36,7 +36,7 @@ public class EndOfTurn extends AppCompatActivity {
         if(n != 0){
             djur.food += djur.mass;
             djur.winpoints += n;
-            djur.food -= Math.pow(minEvolution, n+1);
+            djur.food -= Math.pow(minEvolution, n)*djur.mass;
         }
         if(djur.food >= minBreeding*djur.mass) {
             showBreeding();
