@@ -2,18 +2,24 @@ package com.example.evolutionslek;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.Result;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
+import me.dm7.barcodescanner.zxing.ZXingScannerView;
+
 public class ShowQR extends AppCompatActivity  {
     double[] animal;
+    private ZXingScannerView zXingScannerView;
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +36,16 @@ public class ShowQR extends AppCompatActivity  {
             case "eaten":
                 //mass, horns, speed, defense, health, claws
                 text = JoinDoubles(new int[] {0, 1, 2, 3, 5, 6});
+                generateQR(text);
                 break;
             case "eating":
                 text = Double.toString(intent.getDoubleExtra("damage", 1));
+                generateQR(text);
+                Button b = findViewById(R.id.eaten_button);
+                b.setVisibility(View.VISIBLE);
                 break;
         }
 
-        generateQR(text);
     }
     private void generateQR(String text){
         ImageView imageView = findViewById(R.id.imageView);
@@ -50,6 +59,29 @@ public class ShowQR extends AppCompatActivity  {
             e.printStackTrace();
         }
     }
+
+    public void Finished (View view){
+        zXingScannerView = new ZXingScannerView(getApplicationContext());
+        setContentView(zXingScannerView);
+        zXingScannerView.setResultHandler((ZXingScannerView.ResultHandler) this);
+        zXingScannerView.startCamera();
+
+    }
+
+    @Override
+    public void handleResult(Result result) {
+        String data = result.getText();
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("damage", data);
+        finish();
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        zXingScannerView.stopCamera();
+    }
+
 
     String JoinDoubles(int[] indexes){
         String result = new String();

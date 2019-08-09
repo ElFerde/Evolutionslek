@@ -32,7 +32,7 @@ public class Ingame extends AppCompatActivity {
         Intent intent = new Intent(this, ShowQR.class);
         intent.putExtra(ANIMAL, djur);
         intent.putExtra("code", "eaten");
-        startActivity(intent);
+        startActivityForResult(intent, 20);
     }
 
     public void breed(View view) { //next turn
@@ -108,6 +108,10 @@ public class Ingame extends AppCompatActivity {
                 case 3:
                     djur = data.getParcelableExtra("animal");
                     break;
+                case 20:
+                    String d = data.getStringExtra("damage");
+
+                    djur.health -= Double.parseDouble(d);
             }
         }
         updateTraits();

@@ -88,7 +88,6 @@ public class Eating extends AppCompatActivity implements ZXingScannerView.Result
                     finish();
                 }
                 else {
-
                     Intent sendDamageIntent = new Intent(this, ShowQR.class);
                     sendDamageIntent.putExtra("animal", djur);
                     sendDamageIntent.putExtra("damage", 10);
