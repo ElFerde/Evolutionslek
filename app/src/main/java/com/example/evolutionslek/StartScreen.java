@@ -7,11 +7,11 @@ import android.view.View;
 import android.widget.Button;
 
 /*
- * Called by:
+ * Called by: MainActivity
  *
- * Purpose:
+ * Purpose: To make the user choose their species
  *
- * Possible future improvements:
+ * Possible future improvements: (custom species?)
  */
 
 public class StartScreen extends AppCompatActivity {

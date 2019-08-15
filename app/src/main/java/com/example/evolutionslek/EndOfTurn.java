@@ -20,7 +20,10 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
  *
  * Purpose: Checks if you die, evolve, are able to breed, get winpoint/-s
  *
- * Possible future improvements: edit layout to display stats when breeding, change name of minEvolution, it decides winpoints not evolution
+ * Possible future improvements:
+ *      edit layout to display stats when breeding
+ *      change name of minEvolution, it decides winpoints not evolution
+ *      edit breeding to always display
  */
 
 public class EndOfTurn extends AppCompatActivity {
@@ -36,6 +39,8 @@ public class EndOfTurn extends AppCompatActivity {
         setContentView(R.layout.activity_end_of_turn);
         Intent i = getIntent();
         djur = i.getParcelableExtra(Ingame.ANIMAL);
+
+        //adding winpoints
         int n = 0;
         while(djur.food >= Math.pow(minEvolution, n+1)*djur.mass){
             Toast.makeText(this, "Hej", Toast.LENGTH_SHORT);
@@ -46,6 +51,7 @@ public class EndOfTurn extends AppCompatActivity {
             djur.winpoints += n;
             djur.food -= Math.pow(minEvolution, n)*djur.mass;
         }
+        
         if(djur.food >= minBreeding*djur.mass) {
             showBreeding();
 
