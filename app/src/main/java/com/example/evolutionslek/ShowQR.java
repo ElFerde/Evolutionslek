@@ -12,6 +12,14 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
+/*
+ * Called by: InGame
+ *
+ * Purpose: To show all your stats in a qr-code, so a carnivore can decide if you're eaten
+ *
+ * Possible future improvements: Coming in branch QR, not sure if those are good though
+ */
+
 public class ShowQR extends AppCompatActivity  {
 
     @Override

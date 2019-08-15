@@ -4,11 +4,18 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
+
+/*
+ * Called by: IsDead
+ *
+ * Purpose: Scan two other individuals' breeding qr-codes, and return their child
+ *
+ * Possible future improvements:
+ */
 
 public class Scanning extends AppCompatActivity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView zXingScannerView;
@@ -26,7 +33,6 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
     @Override
     public void handleResult(Result result){
         String data = result.getText();
-        //Toast.makeText(getApplicationContext(), data, Toast.LENGTH_SHORT).show();
         String[] data2 = data.split(",");
         double a = Double.parseDouble(data2[0]);
         double b = Double.parseDouble(data2[1]);
@@ -78,7 +84,7 @@ public class Scanning extends AppCompatActivity implements ZXingScannerView.Resu
     public double newStats(double stat1, double stat2){
         double random1 = Math.random();
         double random3 = Math.random();
-        double random2 = Math.random()*0.4 + 0.8; //creates random between 0.8 - 1.2, should probably be done in a better way
+        double random2 = Math.random()*0.4 + 0.8; //creates random between 0.8 - 1.2
         double result;
         result = (stat1*random1 + stat2*random3)/(random1+random3)*random2;
         return result;

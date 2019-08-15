@@ -10,11 +10,11 @@ import android.view.View;
 import android.widget.TextView;
 
 /*
- * Called by:
+ * Called by: StartScreen
  *
- * Purpose:
+ * Purpose: The class that everything comes back to, calls EndOfTurn, Eating, ShowQR and IsDead
  *
- * Possible future improvements:
+ * Possible future improvements: Use listview instead of 10 textviews for stats
  */
 
 public class Ingame extends AppCompatActivity {
@@ -89,7 +89,6 @@ public class Ingame extends AppCompatActivity {
         if(resultCode == RESULT_OK){
             switch(requestCode) {
                 case 1:
-                    //§t.makeText(getApplicationContext(), data.getStringExtra("result"), Toast.LENGTH_SHORT).show();
                     switch (data.getStringExtra("result")) {
                         case "bad":
                             die();
@@ -97,10 +96,6 @@ public class Ingame extends AppCompatActivity {
                         case "breed":
                             djur = data.getParcelableExtra("animal");
                             break;
-                        /*case "evolution":
-                            djur = data.getParcelableExtra("animal");
-                            djur.food -= EndOfTurn.minBreeding*djur.mass;
-                            break;*/
                         default:
                             djur = data.getParcelableExtra("animal");
                             break;

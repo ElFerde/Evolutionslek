@@ -7,11 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 /*
- * Called by:
+ * Called by: InGame
  *
- * Purpose:
+ * Purpose: Calls Scanning, and becomes the animal that is returned
  *
- * Possible future improvements:
+ * Possible future improvements: make sure the parents are the same species you were before you died
  */
 
 public class IsDead extends AppCompatActivity {
@@ -34,10 +34,7 @@ public class IsDead extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             if (requestCode == 5) {
                 klar = true;
-                //Toast.makeText(getApplicationContext(), Boolean.toString(klar), Toast.LENGTH_SHORT).show();
                 djur = data.getParcelableExtra("result");
-                String text = (Double.toString(djur.mass) + "," + Double.toString(djur.horns) + "," + Double.toString(djur.speed) + "," + Double.toString(djur.defense) + "," + Double.toString(djur.maxHealth) + "," + Double.toString(djur.claws) + "," + Double.toString(djur.attack) + "," + Boolean.toString(djur.herbivore) + "," + djur.species);
-                //Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
 
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("animal", djur);

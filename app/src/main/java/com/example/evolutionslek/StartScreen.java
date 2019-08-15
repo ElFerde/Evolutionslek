@@ -6,6 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+/*
+ * Called by:
+ *
+ * Purpose:
+ *
+ * Possible future improvements:
+ */
+
 public class StartScreen extends AppCompatActivity {
     public static String ANIMAL = "animal";
     Animals djur;

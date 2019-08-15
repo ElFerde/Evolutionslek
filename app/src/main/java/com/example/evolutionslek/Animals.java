@@ -4,11 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /*
-* Called by:
-*
-* Purpose:
-*
-* Possible future improvements:
+* The template for all animals
 */
 
 public class Animals implements Parcelable {
