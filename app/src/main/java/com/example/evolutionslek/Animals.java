@@ -3,6 +3,14 @@ package com.example.evolutionslek;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/*
+* Called by:
+*
+* Purpose:
+*
+* Possible future improvements:
+*/
+
 public class Animals implements Parcelable {
     Animals(){}
     double mass, horns, speed, defense, maxHealth, health, claws, attack, food;

@@ -8,8 +8,14 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-import java.lang.Math;
+
+/*
+ * Called by:
+ *
+ * Purpose:
+ *
+ * Possible future improvements:
+ */
 
 public class Ingame extends AppCompatActivity {
 

@@ -12,6 +12,14 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 import static com.example.evolutionslek.Ingame.ANIMAL;
 
+/*
+ * Called by: Ingame
+ *
+ * Purpose: Reads a qr-code, checks if it is possible to eat, and eats if possible
+ *
+ * Possible future improvements: dealing damage to half-eaten prey, the lastPlant-system?
+ */
+
 public class Eating extends AppCompatActivity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView zXingScannerView;
     Animals djur;
@@ -59,10 +67,6 @@ public class Eating extends AppCompatActivity implements ZXingScannerView.Result
             finish();
         }
         else{
-            //boolean d = true;
-            //if(data2.length < 8){
-              //  d = false;
-            //}
             double r = Math.random();
             if(data2.length < 8 && 1.5*r/(1-r)-0.5 > djur.speed/Integer.parseInt(data2[2])){
 

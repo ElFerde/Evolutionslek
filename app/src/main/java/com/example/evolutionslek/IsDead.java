@@ -5,7 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
+
+/*
+ * Called by:
+ *
+ * Purpose:
+ *
+ * Possible future improvements:
+ */
 
 public class IsDead extends AppCompatActivity {
     boolean klar = false;

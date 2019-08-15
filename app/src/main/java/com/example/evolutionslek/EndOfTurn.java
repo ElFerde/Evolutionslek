@@ -15,6 +15,14 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
+/*
+ * Called by: Ingame
+ *
+ * Purpose: Checks if you die, evolve, are able to breed, get winpoint/-s
+ *
+ * Possible future improvements: edit layout to display stats when breeding, change name of minEvolution, it decides winpoints not evolution
+ */
+
 public class EndOfTurn extends AppCompatActivity {
     Animals djur;
     Boolean klar;

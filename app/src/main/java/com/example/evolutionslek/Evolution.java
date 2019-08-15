@@ -10,6 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+/*
+ * Called by: EndOfTurn
+ *
+ * Purpose: To improve some stats
+ *
+ * Possible future improvements:
+ */
+
 public class Evolution extends AppCompatActivity {
     Animals djur;
     ListView listView;
